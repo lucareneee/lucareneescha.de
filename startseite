@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luca Renée</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1 class="glitch">LUCA RENÉE</h1>
+    <div class="nav-image-container">
+      <img src="gemaelde.jpg" alt="Navigation Gemälde" usemap="#gemaeldemap" class="nav-image" />
+      <map name="gemaeldemap">
+        <area shape="rect" coords="20,20,160,120" href="about.html" alt="Über mich" />
+        <area shape="rect" coords="100,220,280,300" href="poesie.html" alt="Poesie" />
+        <area shape="rect" coords="220,320,360,420" href="galerie.html" alt="Galerie" />
+        <area shape="rect" coords="20,440,140,540" href="kontakt.html" alt="Kontakt" />
+      </map>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
