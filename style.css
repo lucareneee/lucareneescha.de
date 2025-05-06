@@ -1,4 +1,4 @@
-/* === Grundstil (Hintergrund, Schrift) === */
+/* ==== Basisstil ==== */
 body {
   margin: 0;
   padding: 0;
@@ -15,7 +15,7 @@ body {
   text-align: center;
 }
 
-/* === Glitch-Titel === */
+/* ==== Header: Glitch-Effekt ==== */
 h1.glitch {
   font-family: 'Orbitron', sans-serif;
   font-size: 3.5rem;
@@ -32,7 +32,7 @@ h1.glitch {
   100% { opacity: 0.6; }
 }
 
-/* === Bildnavigation (Startseite) === */
+/* ==== Navigation über Bild ==== */
 .nav-image-container {
   margin-top: 2rem;
   position: relative;
@@ -42,8 +42,8 @@ h1.glitch {
   max-width: 100%;
   border: 5px dashed #ffdd00;
   box-shadow: 0 0 25px #ff00cc;
-  border-radius: 12px;
   transition: transform 0.3s ease;
+  border-radius: 12px;
 }
 
 .nav-image:hover {
@@ -55,27 +55,24 @@ area {
   cursor: pointer;
 }
 
-/* === Text-Links auf der Startseite === */
+/* ==== Icons (z. B. für Kontaktseite) ==== */
 .icon-container {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
 .icon-link {
   font-size: 2rem;
-  color: #ff00cc;
+  color: #333;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 .icon-link:hover {
-  color: #00ffe7;
+  color: #ff6347;
 }
 
-/* === Galerie === */
+/* ==== Galerie ==== */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -98,7 +95,54 @@ area {
   box-shadow: 0 0 25px #ff9900;
 }
 
-/* === Zurück-Button === */
+/* ==== Poesie-Chat ==== */
+.chat-box {
+  background-color: #1f0036;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 2rem;
+  box-shadow: 0 0 15px #ff00cc;
+}
+
+.message {
+  max-width: 70%;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 3px solid;
+  border-radius: 12px;
+  text-align: left;
+  font-family: 'VT323', monospace;
+}
+
+.message.left {
+  margin-right: auto;
+  border-color: #ff00cc;
+}
+
+.message.right {
+  margin-left: auto;
+  border-color: #00ffe7;
+}
+
+.message .date {
+  display: block;
+  font-size: 1rem;
+  color: #ff6347;
+  margin-bottom: 0.5rem;
+}
+
+.message p {
+  color: #ffffff;
+  margin: 0;
+}
+
+.message:hover {
+  background-color: #2a0042;
+}
+
+/* ==== Zurück-Button ==== */
 .back-button {
   display: inline-block;
   margin-bottom: 1.5rem;
@@ -110,54 +154,4 @@ area {
 
 .back-button:hover {
   color: #00ffe7;
-}
-
-/* === Chatbox (Poesie-Seite) === */
-.chat-box {
-  background-color: #1f0036;
-  border-radius: 10px;
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  box-shadow: 0 0 15px #ff00cc;
-}
-
-.message {
-  background-color: #1f0036;
-  border: 2px solid #ff00cc;
-  border-radius: 8px;
-  padding: 10px;
-  font-family: 'VT323', monospace;
-  max-width: 80%;
-  color: #ffffff;
-}
-
-/* Abwechselnde Ausrichtung */
-.message.left {
-  align-self: flex-start;
-  border-color: #ff00cc; /* pink */
-}
-
-.message.right {
-  align-self: flex-end;
-  border-color: #00ffe7; /* cyanblau */
-}
-
-.message .date {
-  display: block;
-  font-size: 1rem;
-  color: #ff6347;
-  margin-bottom: 0.5rem;
-}
-
-.message p {
-  margin: 0;
-}
-
-.message:hover {
-  border-color: #ff9900;
 }
