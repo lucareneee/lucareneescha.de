@@ -64,3 +64,19 @@ area:hover::after {
   position: absolute;
   z-index: 100;
 }
+
+.icon-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.icon-link {
+  font-size: 2rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.icon-link:hover {
+  color: #ff6347;
+}
