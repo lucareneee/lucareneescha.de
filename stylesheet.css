@@ -1,0 +1,66 @@
+/* Y2K-trashy Style für Luca Renée */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0a0a0a, #1f0036);
+  color: #ffffff;
+  font-family: 'VT323', monospace;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1.glitch {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  color: #ff00cc;
+  text-shadow: 0 0 5px #ff00cc, 0 0 15px #ff9900, 0 0 30px #00ffe7;
+  animation: flicker 2s infinite alternate;
+  letter-spacing: 0.2rem;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  45% { opacity: 0.8; }
+  70% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.nav-image-container {
+  margin-top: 2rem;
+  position: relative;
+}
+
+.nav-image {
+  max-width: 100%;
+  border: 5px dashed #ffdd00;
+  box-shadow: 0 0 25px #ff00cc;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+}
+
+.nav-image:hover {
+  transform: scale(1.02) rotate(-0.5deg);
+  box-shadow: 0 0 35px #00ffe7;
+}
+
+area {
+  cursor: pointer;
+}
+
+/* Optional: Leuchtpunkte auf die Map-Areas als Deko */
+area:hover::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #ff00cc;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 100;
+}
