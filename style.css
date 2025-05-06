@@ -53,17 +53,7 @@ area {
   cursor: pointer;
 }
 
-/* Optional: Leuchtpunkte auf die Map-Areas als Deko */
-area:hover::after {
-  content: '';
-  display: block;
-  width: 10px;
-  height: 10px;
-  background: #ff00cc;
-  border-radius: 50%;
-  position: absolute;
-  z-index: 100;
-}
+/* Hinweis: ::after funktioniert nicht mit <area> und wurde daher entfernt */
 
 .icon-container {
   display: flex;
