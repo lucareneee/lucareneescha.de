@@ -2,6 +2,7 @@ let audioContext;
 let recordedBuffer = null;
 
 const recordBtn = document.getElementById("record-btn");
+const resetBtn = document.getElementById("reset-btn");
 const keys = document.querySelectorAll(".key");
 
 recordBtn.addEventListener("click", async () => {
@@ -19,6 +20,7 @@ recordBtn.addEventListener("click", async () => {
     const arrayBuffer = await blob.arrayBuffer();
     recordedBuffer = await audioContext.decodeAudioData(arrayBuffer);
     recordBtn.textContent = "✅ Aufnahme gespeichert!";
+    recordBtn.disabled = false;
   };
 
   mediaRecorder.start();
@@ -26,7 +28,12 @@ recordBtn.addEventListener("click", async () => {
   setTimeout(() => {
     mediaRecorder.stop();
     stream.getTracks().forEach(track => track.stop());
-  }, 3000); // 3 Sekunden aufnehmen
+  }, 3000); // 3 Sekunden Aufnahme
+});
+
+resetBtn.addEventListener("click", () => {
+  recordedBuffer = null;
+  alert("Aufnahme gelöscht!");
 });
 
 keys.forEach(key => {
@@ -40,14 +47,7 @@ keys.forEach(key => {
     source.buffer = recordedBuffer;
     source.playbackRate.value = rate;
 
-    const resetBtn = document.getElementById("reset-btn");
-
-resetBtn.addEventListener("click", () => {
-  recordedAudio = null;
-  alert("Aufnahme gelöscht!");
-});
-
-    // Y2K Verzerrung kommt später hier rein!
+    // Optional: Hier können Verzerrungseffekte eingebaut werden (z. B. Bitcrusher)
 
     source.connect(audioContext.destination);
     source.start();
