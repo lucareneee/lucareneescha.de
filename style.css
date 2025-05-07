@@ -156,14 +156,13 @@ area {
   color: #00ffe7;
 }
 
-.pixeltierchen {
-  position: fixed;
+#pixeltierchen {
+  position: absolute;
   bottom: 20px;
   left: -100px;
-  width: 64px;
+  width: 64px; /* oder deine tatsächliche Breite */
   height: auto;
-  image-rendering: pixelated;
-  z-index: 9999;
-  pointer-events: none;
-  transition: transform 1s ease-in-out;
+  z-index: 1000;
+  animation: walkAcross 10s linear infinite;
+  filter: drop-shadow(0 0 5px #ff00cc) drop-shadow(0 0 10px #00ffe7);
 }
