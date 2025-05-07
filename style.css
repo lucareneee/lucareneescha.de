@@ -239,16 +239,16 @@ button {
 }
 
 .key {
+  all: unset;
   width: 60px;
   height: 60px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  border: none;
-  box-shadow: none;
-  background-color: transparent;
   image-rendering: pixelated;
+  cursor: pointer;
 }
+
 
 /* Dynamisch verschiedene Bilder je nach data-note */
 .key[data-note="C"] { background-image: url('images/C.png'); }
