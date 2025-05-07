@@ -167,3 +167,29 @@ area {
   filter: drop-shadow(0 0 5px #ff00cc) drop-shadow(0 0 10px #00ffe7);
 }
 
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1f0036;
+  color: #fff;
+  border: 3px solid #ff00cc;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffe7;
+  z-index: 2000;
+  display: none;
+}
+
+#popup-close {
+  margin-top: 1rem;
+  background: #ff00cc;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #000;
+  cursor: pointer;
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+}
+
