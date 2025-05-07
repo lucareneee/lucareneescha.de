@@ -40,6 +40,13 @@ keys.forEach(key => {
     source.buffer = recordedBuffer;
     source.playbackRate.value = rate;
 
+    const resetBtn = document.getElementById("reset-btn");
+
+resetBtn.addEventListener("click", () => {
+  recordedAudio = null;
+  alert("Aufnahme gelöscht!");
+});
+
     // Y2K Verzerrung kommt später hier rein!
 
     source.connect(audioContext.destination);
