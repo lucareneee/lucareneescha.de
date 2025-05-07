@@ -48,18 +48,21 @@ resetBtn.addEventListener("click", () => {
 
 keys.forEach(key => {
   key.addEventListener("click", () => {
-    if (!recordedBuffer || !audioContext) return;
-
     const semitone = parseInt(key.dataset.semitone);
-    const rate = Math.pow(2, semitone / 12);
+    const note = key.dataset.note;
 
-    const source = audioContext.createBufferSource();
-    source.buffer = recordedBuffer;
-    source.playbackRate.value = rate;
+    if (recordedBuffer && audioContext) {
+      const rate = Math.pow(2, semitone / 12);
+      const source = audioContext.createBufferSource();
+      source.buffer = recordedBuffer;
+      source.playbackRate.value = rate;
 
-    // Optional: Hier können Verzerrungseffekte eingebaut werden (z. B. Bitcrusher)
-
-    source.connect(audioContext.destination);
-    source.start();
+      source.connect(audioContext.destination);
+      source.start();
+    } else {
+      // Fallback: Standardton abspielen
+      const audio = new Audio(`sounds/${note}.wav`);
+      audio.play();
+    }
   });
 });
