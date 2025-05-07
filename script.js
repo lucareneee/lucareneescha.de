@@ -26,3 +26,10 @@ window.addEventListener('load', () => {
   setTimeout(laufAnimation, 3000);
 });
 
+function showPopup() {
+  document.getElementById("popup").style.display = "block";
+}
+
+function hidePopup() {
+  document.getElementById("popup").style.display = "none";
+}
