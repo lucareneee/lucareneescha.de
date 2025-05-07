@@ -33,7 +33,17 @@ recordBtn.addEventListener("click", async () => {
 
 resetBtn.addEventListener("click", () => {
   recordedBuffer = null;
-  alert("Aufnahme gelöscht!");
+
+  // Option A: alert (klassisch)
+  // alert("Aufnahme gelöscht!");
+
+  // Option B: eigenes Popup (wenn du willst)
+  const popup = document.getElementById("popup");
+  popup.textContent = "Aufnahme gelöscht!";
+  popup.style.display = "block";
+  setTimeout(() => {
+     popup.style.display = "none";
+   }, 2000);
 });
 
 keys.forEach(key => {
