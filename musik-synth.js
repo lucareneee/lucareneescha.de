@@ -1,4 +1,4 @@
-let audioContext;
+let audioContext = new (window.AudioContext || window.webkitAudioContext)(); // direkt initialisieren
 let recordedBuffer = null;
 
 const recordBtn = document.getElementById("record-btn");
@@ -9,7 +9,6 @@ recordBtn.addEventListener("click", async () => {
   recordBtn.disabled = true;
   recordBtn.textContent = "🎙️ Aufnahme läuft...";
 
-  audioContext = new (window.AudioContext || window.webkitAudioContext)();
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
   const mediaRecorder = new MediaRecorder(stream);
   const chunks = [];
@@ -28,22 +27,17 @@ recordBtn.addEventListener("click", async () => {
   setTimeout(() => {
     mediaRecorder.stop();
     stream.getTracks().forEach(track => track.stop());
-  }, 3000); // 3 Sekunden Aufnahme
+  }, 3000);
 });
 
 resetBtn.addEventListener("click", () => {
   recordedBuffer = null;
-
-  // Option A: alert (klassisch)
-  // alert("Aufnahme gelöscht!");
-
-  // Option B: eigenes Popup (wenn du willst)
   const popup = document.getElementById("popup");
   popup.textContent = "Aufnahme gelöscht!";
   popup.style.display = "block";
   setTimeout(() => {
-     popup.style.display = "none";
-   }, 2000);
+    popup.style.display = "none";
+  }, 2000);
 });
 
 keys.forEach(key => {
@@ -51,18 +45,15 @@ keys.forEach(key => {
     const semitone = parseInt(key.dataset.semitone);
     const note = key.dataset.note;
 
-    if (recordedBuffer && audioContext) {
-      const rate = Math.pow(2, semitone / 12);
+    if (recordedBuffer) {
       const source = audioContext.createBufferSource();
       source.buffer = recordedBuffer;
-      source.playbackRate.value = rate;
-
+      source.playbackRate.value = Math.pow(2, semitone / 12);
       source.connect(audioContext.destination);
       source.start();
     } else {
-      // Fallback: Standardton abspielen
-      const audio = new Audio(`sounds/${note}.wav`);
-      audio.play();
+      const fallback = new Audio(`sounds/${note}.wav`);
+      fallback.play();
     }
   });
 });
