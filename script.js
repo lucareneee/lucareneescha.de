@@ -1,4 +1,4 @@
-const tierchen = document.querySelector('.pixeltierchen');
+const tierchen = document.getElementById('pixeltierchen');  // Nutze die ID, nicht die Klasse
 
 function laufAnimation() {
   const laufrichtung = Math.random() > 0.5 ? 'rechts' : 'links';
@@ -6,8 +6,8 @@ function laufAnimation() {
   const tierchenWidth = tierchen.offsetWidth;
   const start = laufrichtung === 'rechts' ? -tierchenWidth : screenWidth + tierchenWidth;
   const end = laufrichtung === 'rechts' ? screenWidth + tierchenWidth : -tierchenWidth;
-  
-  // Position setzen ohne Animation für den fließenden Übergang
+
+  // Position setzen ohne Animation für fließenden Übergang
   tierchen.style.transition = 'none';
   tierchen.style.left = start + 'px';
   tierchen.style.transform = laufrichtung === 'rechts' ? 'scaleX(1)' : 'scaleX(-1)';
