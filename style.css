@@ -164,8 +164,6 @@ area {
   z-index: 1000;
   transition: transform 0.5s ease;
   cursor: pointer;
-  box-shadow: 0 0 10px 3px cyan;  /* Leuchtender Rand */
-  filter: glow(0.8); /* optionaler Glüheffekt */
 }
 
 #popup {
