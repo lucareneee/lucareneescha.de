@@ -239,12 +239,27 @@ button {
 }
 
 .key {
-  image-rendering: pixelated;
-  background-image: url('images/pixel-key-bg.png'); /* falls du ein Pixelbild hast */
-  background-size: cover;
   width: 60px;
   height: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  image-rendering: pixelated;
 }
+
+/* Dynamisch verschiedene Bilder je nach data-note */
+.key[data-note="C"] { background-image: url('images/C.png'); }
+.key[data-note="D"] { background-image: url('images/D.png'); }
+.key[data-note="E"] { background-image: url('images/E.png'); }
+.key[data-note="F"] { background-image: url('images/F.png'); }
+.key[data-note="G"] { background-image: url('images/G.png'); }
+.key[data-note="A"] { background-image: url('images/A.png'); }
+.key[data-note="B"] { background-image: url('images/B.png'); }
+.key[data-note="C2"] { background-image: url('images/C.png'); }
+
 
 button:hover {
   box-shadow: 0 0 20px magenta;
