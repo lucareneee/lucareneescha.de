@@ -190,3 +190,50 @@ area {
   cursor: pointer;
   font-family: 'VT323', monospace;
 }
+
+#mini-synth {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #0a0a0a;
+  border: 3px dashed magenta;
+  box-shadow: 0 0 25px #ff00cc;
+  border-radius: 12px;
+}
+
+#record-btn {
+  background: magenta;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'VT323', monospace;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 15px cyan;
+}
+
+#keyboard {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.key {
+  background: black;
+  border: 2px solid cyan;
+  padding: 20px 10px;
+  color: cyan;
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 0 10px magenta;
+  transition: transform 0.1s ease;
+}
+
+.key:hover {
+  transform: scale(1.05);
+  background: #111;
+  box-shadow: 0 0 15px magenta;
+}
