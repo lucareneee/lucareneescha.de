@@ -251,14 +251,14 @@ button {
 
 
 /* Dynamisch verschiedene Bilder je nach data-note */
-.key[data-note="C"] { background-image: url('images/C.png'); }
-.key[data-note="D"] { background-image: url('images/D.png'); }
-.key[data-note="E"] { background-image: url('images/E.png'); }
-.key[data-note="F"] { background-image: url('images/F.png'); }
-.key[data-note="G"] { background-image: url('images/G.png'); }
-.key[data-note="A"] { background-image: url('images/A.png'); }
-.key[data-note="H"] { background-image: url('images/H.png'); }
-.key[data-note="C2"] { background-image: url('images/C.png'); }
+/* .key[data-note="C"] { background-image: url('images/C.png'); }
+/* .key[data-note="D"] { background-image: url('images/D.png'); }
+/* .key[data-note="E"] { background-image: url('images/E.png'); }
+/* .key[data-note="F"] { background-image: url('images/F.png'); }
+/* .key[data-note="G"] { background-image: url('images/G.png'); }
+/* .key[data-note="A"] { background-image: url('images/A.png'); }
+/* .key[data-note="H"] { background-image: url('images/H.png'); }
+/* .key[data-note="C2"] { background-image: url('images/C.png'); }
 
 
 button:hover {
