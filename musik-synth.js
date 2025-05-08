@@ -57,3 +57,18 @@ keys.forEach(key => {
     }
   });
 });
+
+});keys.forEach(key => {  
+  key.addEventListener("click", () => {    
+    const semitone = parseInt(key.dataset.semitone);    
+    const note = key.dataset.note;    
+    if (recordedBuffer && audioContext) {      
+      const rate = Math.pow(2, semitone / 12);      
+      const source = audioContext.createBufferSource();      
+      source.buffer = recordedBuffer;      
+      source.playbackRate.value = rate;      
+      source.connect(audioContext.destination);      
+      source.start();     
+        }  
+      });
+    });
