@@ -41,21 +41,19 @@ resetBtn.addEventListener("click", () => {
 });
 
 keys.forEach(key => {
-  key.addEventListener("click", () => {
-    const semitone = parseInt(key.dataset.semitone);
-    const note = key.dataset.note;
+  key.addEventListener("click", async () => {
+    const action = key.dataset.action;
 
-    if (recordedBuffer && audioContext) {
-      const rate = Math.pow(2, semitone / 12);
-      const source = audioContext.createBufferSource();
-      source.buffer = recordedBuffer;
-      source.playbackRate.value = rate;
-
-      source.connect(audioContext.destination);
-      source.start();
+    if (action === "record") {
+      // Start Aufnahme
+      startRecording(); // deine Funktion
+    } else if (action === "reset") {
+      recordedBuffer = null;
+      showPopup("Aufnahme gelöscht!");
+    } else if (action === "help") {
+      showHelpSMS(); // neue Funktion
     } else {
-      const audio = new Audio(`sounds/${note}.wav`);
-      audio.play();
+      // Ton abspielen (wie bisher)
     }
   });
 });
