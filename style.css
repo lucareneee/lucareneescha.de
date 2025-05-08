@@ -193,31 +193,19 @@ area {
 
 #mini-synth {
   text-align: center;
-  margin-top: 3rem;
-  padding: 2rem;
+  margin: 3rem auto;
+  padding: 1rem;
   background: #0a0a0a;
   border: 3px dashed magenta;
   box-shadow: 0 0 25px #ff00cc;
   border-radius: 12px;
+  max-width: 800px; /* Begrenzung der Breite */
 }
 
 .synth-container {
   margin-top: 2rem;
   text-align: center;
   font-family: 'VT323', monospace;
-}
-
-
-#record-btn {
-  background: magenta;
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  font-family: 'VT323', monospace;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 15px cyan;
 }
 
 button {
@@ -232,36 +220,32 @@ button {
 }
 
 #keyboard {
-  display: inline-block;
-  padding: 10px;
-  background-color: #f3f3f3;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 1rem;
   display: flex;  /* Flexbox, um die Buttons in einer Reihe zu positionieren */
   justify-content: space-between; /* Verteilt die Buttons gleichmäßig */
   align-items: center;
 }
 
 .key {
-  width: 50px;   /* Standardgröße der Tasten */
-  height: 150px; /* Höhe der Tasten */
-  margin: 0 5px;
-  border: none;
+  image-rendering: pixelated;
   background-size: cover;
-  display: inline-block;
-  background-color: transparent; /* Verhindert Hintergrundfarbe, wenn PNG-Icons genutzt werden */
-}
-
-#record-btn, #reset-btn {
-  width: 40px;   /* Kleinere Buttons für Aufnahme und Löschen */
-  height: 40px;  /* Kleinere Höhe für die Button-Icons */
-  margin: 0 10px; /* Etwas Abstand zu den anderen Tasten */
+  width: 60px;
+  height: 60px;
+  border: none;
   background-color: transparent;
-  background-size: contain;  /* Sorgt dafür, dass das Bild innerhalb des Buttons bleibt */
+  cursor: pointer;
 }
 
+.control-key {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
 .key:active {
   opacity: 0.7;
 }
