@@ -232,26 +232,46 @@ button {
 }
 
 #keyboard {
-  display: inline-block;  /* Damit der Container nur so groß wie der Inhalt wird */
-  padding: 10px;          /* Etwas Abstand um den Inhalt */
-  background-color: #f3f3f3; /* Optional, für ein schönes Design */
-  border-radius: 10px;    /* Weiche Kanten für den Kasten */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional, für einen Schatten */
-  margin: 0 auto;         /* Zentriert das Ganze */
-  text-align: center;     /* Wenn die Tasten schön zentriert sein sollen */
+  display: inline-block;
+  padding: 10px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  text-align: center;
+  display: flex;  /* Flexbox, um die Buttons in einer Reihe zu positionieren */
+  justify-content: space-between; /* Verteilt die Buttons gleichmäßig */
+  align-items: center;
 }
 
 .key {
-  width: 50px;           /* Standardgröße der Tasten */
-  height: 150px;         /* Höhe der Tasten */
-  margin: 0 5px;         /* Etwas Platz zwischen den Tasten */
-  border: none;          /* Keine Ränder um die Tasten */
-  background-size: cover; /* Hintergrundbild skaliert gut auf die Taste */
-  display: inline-block;  /* Tasten nebeneinander */
+  width: 50px;   /* Standardgröße der Tasten */
+  height: 150px; /* Höhe der Tasten */
+  margin: 0 5px;
+  border: none;
+  background-size: cover;
+  display: inline-block;
+  background-color: transparent; /* Verhindert Hintergrundfarbe, wenn PNG-Icons genutzt werden */
+}
+
+#record-btn, #reset-btn {
+  width: 40px;   /* Kleinere Buttons für Aufnahme und Löschen */
+  height: 40px;  /* Kleinere Höhe für die Button-Icons */
+  margin: 0 10px; /* Etwas Abstand zu den anderen Tasten */
+  background-color: transparent;
+  background-size: contain;  /* Sorgt dafür, dass das Bild innerhalb des Buttons bleibt */
 }
 
 .key:active {
-  opacity: 0.7; /* Leicht transparent, wenn die Taste gedrückt wird */
+  opacity: 0.7;
+}
+
+#record-btn {
+  order: -1; /* Positioniert den Aufnahme-Button ganz links */
+}
+
+#reset-btn {
+  order: 1; /* Positioniert den Löschen-Button ganz rechts */
 }
 
 @media (max-width: 768px) {
