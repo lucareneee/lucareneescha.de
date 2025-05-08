@@ -41,10 +41,16 @@ button:hover {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  box-shadow: none;
+}
+
+.key:hover {
+  filter: drop-shadow(0 0 6px cyan);
 }
 
 .key:active {
   opacity: 0.7;
+  filter: drop-shadow(0 0 12px magenta);
 }
 
 .control-key {
