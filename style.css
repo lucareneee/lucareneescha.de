@@ -15,6 +15,44 @@ body {
   text-align: center;
 }
 
+/* ==== Buttons ==== */
+button {
+  background: #111;
+  color: #0ff;
+  border: 3px solid #0ff;
+  padding: 10px 15px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 0 10px #0ff;
+  font-family: 'VT323', monospace;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  box-shadow: 0 0 20px magenta;
+  transform: scale(1.05);
+}
+
+.key {
+  image-rendering: pixelated;
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.key:active {
+  opacity: 0.7;
+}
+
+.control-key {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
 /* ==== Header: Glitch-Effekt ==== */
 h1.glitch {
   font-family: 'Orbitron', sans-serif;
@@ -32,7 +70,7 @@ h1.glitch {
   100% { opacity: 0.6; }
 }
 
-/* ==== Navigation über Bild ==== */
+/* ==== Bildbasierte Navigation ==== */
 .nav-image-container {
   margin-top: 2rem;
   position: relative;
@@ -55,7 +93,7 @@ area {
   cursor: pointer;
 }
 
-/* ==== Icons (z. B. für Kontaktseite) ==== */
+/* ==== Icon-Stil (z. B. Kontaktseite) ==== */
 .icon-container {
   display: flex;
   justify-content: space-around;
@@ -101,8 +139,7 @@ area {
   border-radius: 10px;
   padding: 2rem;
   max-width: 800px;
-  margin: auto;
-  margin-top: 2rem;
+  margin: 2rem auto 0 auto;
   box-shadow: 0 0 15px #ff00cc;
 }
 
@@ -156,6 +193,7 @@ area {
   color: #00ffe7;
 }
 
+/* ==== Pixel-Tierchen ==== */
 #pixeltierchen {
   position: fixed;
   bottom: 20px;
@@ -166,6 +204,7 @@ area {
   cursor: pointer;
 }
 
+/* ==== Popup ==== */
 #popup {
   position: fixed;
   bottom: 100px;
@@ -191,6 +230,7 @@ area {
   font-family: 'VT323', monospace;
 }
 
+/* ==== Mini-Synth ==== */
 #mini-synth {
   text-align: center;
   margin: 3rem auto;
@@ -199,74 +239,35 @@ area {
   border: 3px dashed magenta;
   box-shadow: 0 0 25px #ff00cc;
   border-radius: 12px;
-  max-width: 800px; /* Begrenzung der Breite */
+  max-width: 800px;
 }
 
 .synth-container {
   margin-top: 2rem;
   text-align: center;
-  font-family: 'VT323', monospace;
 }
 
-button {
-  background: #111;
-  color: #0ff;
-  border: 3px solid #0ff;
-  padding: 10px 15px;
-  font-size: 1.3rem;
-  cursor: pointer;
-  box-shadow: 0 0 10px #0ff;
-  font-family: 'VT323', monospace;
-}
-
+/* ==== Keyboard-Tasten (Synth) ==== */
 #keyboard {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
   margin-top: 1rem;
-  display: flex;  /* Flexbox, um die Buttons in einer Reihe zu positionieren */
-  justify-content: space-between; /* Verteilt die Buttons gleichmäßig */
-  align-items: center;
-}
-
-.key {
-  image-rendering: pixelated;
-  background-size: cover;
-  width: 60px;
-  height: 60px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.control-key {
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-}
-.key:active {
-  opacity: 0.7;
 }
 
 #record-btn {
-  order: -1; /* Positioniert den Aufnahme-Button ganz links */
+  order: -1;
 }
 
 #reset-btn {
-  order: 1; /* Positioniert den Löschen-Button ganz rechts */
+  order: 1;
 }
 
 @media (max-width: 768px) {
   .key {
-    width: 40px; /* Kleinere Tasten auf kleinen Bildschirmen */
+    width: 40px;
     height: 120px;
   }
-}
-
-
-button:hover {
-  box-shadow: 0 0 20px magenta;
-  transform: scale(1.05);
 }
