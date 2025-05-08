@@ -220,13 +220,6 @@ area {
   box-shadow: 0 0 15px cyan;
 }
 
-#keyboard {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 1rem;
-}
-
 button {
   background: #111;
   color: #0ff;
@@ -238,16 +231,36 @@ button {
   font-family: 'VT323', monospace;
 }
 
-.key {
-  all: unset;
-  width: 60px;
-  height: 60px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  image-rendering: pixelated;
-  cursor: pointer;
+#keyboard {
+  display: inline-block;  /* Damit der Container nur so groß wie der Inhalt wird */
+  padding: 10px;          /* Etwas Abstand um den Inhalt */
+  background-color: #f3f3f3; /* Optional, für ein schönes Design */
+  border-radius: 10px;    /* Weiche Kanten für den Kasten */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional, für einen Schatten */
+  margin: 0 auto;         /* Zentriert das Ganze */
+  text-align: center;     /* Wenn die Tasten schön zentriert sein sollen */
 }
+
+.key {
+  width: 50px;           /* Standardgröße der Tasten */
+  height: 150px;         /* Höhe der Tasten */
+  margin: 0 5px;         /* Etwas Platz zwischen den Tasten */
+  border: none;          /* Keine Ränder um die Tasten */
+  background-size: cover; /* Hintergrundbild skaliert gut auf die Taste */
+  display: inline-block;  /* Tasten nebeneinander */
+}
+
+.key:active {
+  opacity: 0.7; /* Leicht transparent, wenn die Taste gedrückt wird */
+}
+
+@media (max-width: 768px) {
+  .key {
+    width: 40px; /* Kleinere Tasten auf kleinen Bildschirmen */
+    height: 120px;
+  }
+}
+
 
 button:hover {
   box-shadow: 0 0 20px magenta;
