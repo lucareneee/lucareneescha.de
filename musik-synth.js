@@ -1,4 +1,4 @@
-let audioContext = new (window.AudioContext || window.webkitAudioContext)(); // direkt initialisieren
+let audioContext;
 let recordedBuffer = null;
 
 const recordBtn = document.getElementById("record-btn");
@@ -6,9 +6,9 @@ const resetBtn = document.getElementById("reset-btn");
 const keys = document.querySelectorAll(".key");
 
 recordBtn.addEventListener("click", async () => {
-  recordBtn.disabled = true;
-  recordBtn.textContent = "🎙️ Aufnahme läuft...";
+  recordBtn.style.opacity = 0.5;
 
+  audioContext = new (window.AudioContext || window.webkitAudioContext)();
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
   const mediaRecorder = new MediaRecorder(stream);
   const chunks = [];
@@ -18,8 +18,7 @@ recordBtn.addEventListener("click", async () => {
     const blob = new Blob(chunks, { type: "audio/webm" });
     const arrayBuffer = await blob.arrayBuffer();
     recordedBuffer = await audioContext.decodeAudioData(arrayBuffer);
-    recordBtn.textContent = "✅ Aufnahme gespeichert!";
-    recordBtn.disabled = false;
+    recordBtn.style.opacity = 1;
   };
 
   mediaRecorder.start();
@@ -27,11 +26,12 @@ recordBtn.addEventListener("click", async () => {
   setTimeout(() => {
     mediaRecorder.stop();
     stream.getTracks().forEach(track => track.stop());
-  }, 3000);
+  }, 3000); // 3 Sekunden Aufnahme
 });
 
 resetBtn.addEventListener("click", () => {
   recordedBuffer = null;
+
   const popup = document.getElementById("popup");
   popup.textContent = "Aufnahme gelöscht!";
   popup.style.display = "block";
@@ -45,15 +45,17 @@ keys.forEach(key => {
     const semitone = parseInt(key.dataset.semitone);
     const note = key.dataset.note;
 
-    if (recordedBuffer) {
+    if (recordedBuffer && audioContext) {
+      const rate = Math.pow(2, semitone / 12);
       const source = audioContext.createBufferSource();
       source.buffer = recordedBuffer;
-      source.playbackRate.value = Math.pow(2, semitone / 12);
+      source.playbackRate.value = rate;
+
       source.connect(audioContext.destination);
       source.start();
     } else {
-      const fallback = new Audio(`sounds/${note}.wav`);
-      fallback.play();
+      const audio = new Audio(`sounds/${note}.wav`);
+      audio.play();
     }
   });
 });
