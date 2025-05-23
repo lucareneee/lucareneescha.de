@@ -1,1 +1,449 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lucaverse – Orbit festgelegt</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #000;
+      font-family: 'Courier New', monospace;
+      overflow: hidden;
+    }
 
+    .layer {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 1s ease, transform 1s ease;
+      transform-style: preserve-3d;
+    }
+
+    .layer.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(1.1);
+    }
+
+    .layer.visible {
+      opacity: 1;
+      pointer-events: all;
+      transform: scale(1);
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #0ff;
+      animation: twinkle 5s infinite ease-in-out alternate, floatStar 15s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes floatStar {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(3px, -3px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    @keyframes orbitFloat1 {
+  0% { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+}
+@keyframes orbitFloat2 {
+  0% { transform: rotate(0deg) translateX(250px) rotate(0deg); }
+  100% { transform: rotate(-360deg) translateX(250px) rotate(360deg); }
+}
+@keyframes orbitFloat3 {
+  0% { transform: rotate(0deg) translateX(300px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(300px) rotate(-360deg); }
+}
+@keyframes orbitFloat4 {
+  0% { transform: rotate(0deg) translateX(180px) rotate(0deg); }
+  100% { transform: rotate(-360deg) translateX(180px) rotate(360deg); }
+}
+
+    
+    .planet {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #0ff, #004466);
+      box-shadow: 0 0 80px #0ff;
+      top: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: pulse 6s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.05); }
+    }
+
+    .portal {
+      position: absolute;
+      width: 200px;
+      height: 320px;
+      border: 3px dashed #0ff;
+      box-shadow: inset 0 0 30px #0ff5, 0 0 30px #0ff5;
+      top: 400px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 3;
+      color: #0ff;
+    }
+
+    .absurd-text {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #0ff9;
+      animation: floattext 6s ease-in-out infinite;
+    }
+
+    @keyframes floattext {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    .orbit-object {
+      border: 1px solid #0ff;
+      padding: 10px 16px;
+      margin: 10px;
+      box-shadow: 0 0 10px #0ff8;
+      cursor: pointer;
+      background: rgba(0, 255, 255, 0.03);
+      font-size: 14px;
+      animation: floatObj 6s infinite ease-in-out;
+      display: inline-block;
+      color: #0ff;
+    }
+
+    @keyframes floatObj {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .orbit-poem {
+      position: absolute;
+      font-size: 13px;
+      color: #0ff9;
+      animation: orbitFloat 80s linear infinite;
+    }
+   
+   
+    .gallery-item, .music-float {
+      position: absolute;
+      font-size: 13px;
+      color: #0ff9;
+      animation: orbitFloat 40s linear infinite;
+    }
+
+    .gallery-item img {
+      width: 80px;
+      height: auto;
+      border: 1px solid #0ff;
+      box-shadow: 0 0 10px #0ff6;
+    }
+
+    .music-float a {
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @keyframes orbitFloat {
+      0% { transform: rotate(0deg) translateX(250px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(250px) rotate(-360deg); }
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #000;
+      color: #0ff;
+      padding: 30px;
+      border: 2px solid #0ff;
+      box-shadow: 0 0 50px #0ff;
+      z-index: 999;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.4s ease;
+    }
+
+    .popup.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    textarea.editor {
+      background: #000;
+      border: 1px solid #0ff;
+      color: #0ff;
+      padding: 10px;
+      width: 300px;
+      height: 100px;
+      margin: 15px;
+    }
+
+    button.submit {
+      padding: 10px 20px;
+      border: 1px solid #0ff;
+      background: #000;
+      color: #0ff;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    #contactPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: #000;
+  border: 2px solid #0ff;
+  padding: 20px;
+  color: #0ff;
+  z-index: 1000;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 0 40px #0ff;
+  transition: transform 0.4s ease;
+}
+#lightboxOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+#lightboxOverlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 0 40px #0ff;
+  border: 2px solid #0ff;
+}
+
+#contactPopup.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.lightbox-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #0ff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+#prevBtn {
+  left: 5%;
+}
+#nextBtn {
+  right: 5%;
+}
+.ig-handle {
+  margin-top: 15px;
+  animation: wobble 4s infinite ease-in-out;
+  color: #0ff;
+  font-size: 0.9rem;
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+  75% { transform: rotate(1deg); }
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="layer visible" id="layer-outer">
+    <div class="stars" id="stars"></div>
+    <div class="planet"></div>
+    <div class="portal" onclick="enterOrbit()">✦ Eintreten</div>
+    <div class="absurd-text">"Du bist jetzt zwischen Möglichkeit und Erinnerung..."</div>
+  </div>
+
+  <div class="layer hidden" id="layer-inner">
+    <div class="orbit-object" onclick="toggleContact()">📬 Kontakt</div>
+<textarea class="editor" id="poemInput" placeholder="Schreib dein Traumfragment…"></textarea>
+    <button class="submit" onclick="addPoem()">➤ Abschicken</button>
+    <div id="poemOrbitContainer"></div>
+    <div class="orbit-poem" style="animation: orbitFloat1 40s linear infinite;">„Es steigen Tränen die steile Treppe zu meinen Lidern hinauf. Warum ist der Himmel so bitter drauf? Doch ich hab vom Traurigsein keinen Schimmer. Eigentlich ist es nie wie immer.“</div>
+<div class="orbit-poem" style="animation: orbitFloat2 50s linear infinite;">„Bin schon wieder ein bisschen in alles verliebt“</div>
+<div class="orbit-poem" style="animation: orbitFloat3 45s linear infinite;">„Wir sind beide cool und manchmal überschneiden sich halt unsere coolness Kreise“</div>
+<div class="orbit-poem" style="animation: orbitFloat4 60s linear infinite;">„Manchmal wünscht' ich mir, du könntest mich als Musik sehen. Doch Baby, ich kam als Poesie und so werd' ich gehen.“</div>
+<div class="music-float" style="top:30%;left:40%;animation-delay:3s;"><a href="https://open.spotify.com/intl-de/track/0taUTMBdkBc8Iu7ZwvXLud?si=430bfa45821546ee" target="_blank">♫ Einzelstück</a></div>
+    <div class="music-float" style="top:70%;left:20%;animation-delay:6s;"><a href="https://open.spotify.com/intl-de/track/1SCbNeZjVKu6JHEUqXRFfC?si=2ef67fee872b46b4" target="_blank">♫ Wie du scheinst</a></div>
+    <div class="orbit-object" onclick="resetScene()">🌌 Zurück</div>
+    <div class="gallery-item" style="top:10%;left:80%;animation-delay:5s;"><img src="img1.jpeg" alt="img1"></div>
+    <div class="gallery-item" style="top:60%;left:5%;animation-delay:10s;"><img src="img2.jpeg" alt="img2"></div>
+    <div class="gallery-item" style="top:20%;left:30%;animation-delay:12s;"><img src="img3.jpeg" alt="img3"></div>
+    <div class="gallery-item" style="top:70%;left:60%;animation-delay:8s;"><img src="img4.jpeg" alt="img4"></div>
+    <div class="gallery-item" style="top:40%;left:10%;animation-delay:6s;"><img src="img5.jpeg" alt="img5"></div>
+    <div class="gallery-item" style="top:50%;left:50%;animation-delay:15s;"><img src="img6.jpeg" alt="img6"></div>
+    <div class="gallery-item" style="top:15%;left:70%;animation-delay:7s;"><img src="img7.jpeg" alt="img7"></div>
+    <div class="gallery-item" style="top:80%;left:15%;animation-delay:11s;"><img src="img8.jpeg" alt="img8"></div>
+    <div class="gallery-item" style="top:25%;left:85%;animation-delay:9s;"><img src="img9.jpeg" alt="img9"></div>
+    <div class="gallery-item" style="top:45%;left:35%;animation-delay:13s;"><img src="img10.jpeg" alt="img10"></div>
+  </div>
+
+  <div class="popup" id="popup">
+    <h2 id="popup-title"></h2>
+    <p id="popup-text"></p>
+  </div>
+  <div class="popup" id="contactPopup">
+    <h2>Schreib mir</h2>
+    <p>Ich freu mich auf deine Nachricht!</p>
+    <a href="mailto:lucarenee.music@gmail.com" style="color:#0ff; font-weight:bold;">lucarenee.music@gmail.com</a>
+    <div class="ig-handle">Insta: <a href="https://www.instagram.com/lucareneeschade" target="_blank">@lucareneeschade</a></div>
+
+    <br /><br />
+    <button class="submit" onclick="toggleContact()">Schließen</button>
+  </div>
+
+  <div id="lightboxOverlay">
+    <img id="lightboxImage" src="" alt="Großansicht" />
+    <button id="prevBtn" class="lightbox-arrow" onclick="changeImage(-1)">←</button>
+    <button id="nextBtn" class="lightbox-arrow" onclick="changeImage(1)">→</button>
+  </div>
+  
+  <script>
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 150; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.animationDuration = (2 + Math.random() * 6) + 's';
+      starsContainer.appendChild(s);
+    }
+
+    function toggleContact() {
+  const popup = document.getElementById('contactPopup');
+  popup.classList.toggle('active');
+}
+// Bilder anklickbar machen
+document.querySelectorAll('.gallery-item img').forEach(img => {
+  img.addEventListener('click', () => {
+    document.getElementById('lightboxImage').src = img.src;
+    document.getElementById('lightboxOverlay').style.display = 'flex';
+  });
+});
+
+let galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
+let currentIndex = 0;
+
+galleryImages.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    currentIndex = index;
+    showImage(index);
+  });
+});
+
+function showImage(index) {
+  const lightboxImage = document.getElementById('lightboxImage');
+  lightboxImage.src = galleryImages[index].src;
+  document.getElementById('lightboxOverlay').style.display = 'flex';
+}
+
+function changeImage(direction) {
+  currentIndex += direction;
+  if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+  if (currentIndex >= galleryImages.length) currentIndex = 0;
+  showImage(currentIndex);
+}
+// Nur schließen, wenn man außerhalb von Bild oder Pfeilen klickt
+document.getElementById('lightboxOverlay').addEventListener('click', function(e) {
+  if (e.target.id === 'lightboxOverlay') {
+    closeLightbox();
+  }
+});
+
+
+// Overlay schließen
+function closeLightbox() {
+  document.getElementById('lightboxOverlay').style.display = 'none';
+}
+
+
+    function enterOrbit() {
+      document.getElementById('layer-outer').classList.replace('visible', 'hidden');
+      document.getElementById('layer-inner').classList.replace('hidden', 'visible');
+    }
+
+    function resetScene() {
+      document.getElementById('layer-inner').classList.replace('visible', 'hidden');
+      document.getElementById('layer-outer').classList.replace('hidden', 'visible');
+    }
+
+    function showPopup(type) {
+      const popup = document.getElementById('popup');
+      const title = document.getElementById('popup-title');
+      const text = document.getElementById('popup-text');
+      if (type === 'poem') {
+        title.textContent = 'Gedichtfragment';
+        text.textContent = 'Ich schreibe mit Licht auf dein Innenohr, damit du tanzt.';
+      }
+      popup.classList.add('active');
+      setTimeout(() => popup.classList.remove('active'), 5000);
+    }
+
+
+    function addPoem() {
+  const text = document.getElementById('poemInput').value.trim();
+  if (!text) return;
+  const div = document.createElement('div');
+  div.className = 'orbit-poem';
+  div.textContent = '„' + text + '“';
+  div.style.top = Math.random() * 80 + '%';
+  div.style.left = Math.random() * 80 + '%';
+  const duration = 40 + Math.random() * 40;
+  const path = Math.ceil(Math.random() * 4); // 1–4
+  div.style.animation = `orbitFloat${path} ${duration}s linear infinite`;
+  document.getElementById('poemOrbitContainer').appendChild(div);
+  document.getElementById('poemInput').value = '';
+}
+
+  </script>
+</body>
+</html>
