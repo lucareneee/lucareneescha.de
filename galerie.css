@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    background: #000;
+    color: #0ff;
+    font-family: 'Courier New', monospace;
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 0.2em;
+  }
+  
+  .back-button {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0ff;
+    border: 1px solid #0ff;
+    padding: 6px 14px;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  
+  .back-button:hover {
+    background: #0ff;
+    color: #000;
+  }
+  
+  .grid {
+    column-count: 3;                /* Zwei Spalten */
+    column-gap: 70px;               /* Abstand zwischen Spalten */
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .artwork {
+    display: inline-block;          /* Damit column funktioniert */
+    width: 100%;                    /* Passt sich Spaltenbreite an */
+    margin-bottom: 30px;
+    background: #010c10;
+    padding: 10px;
+    border: 1px solid #0ff4;
+    box-shadow: 0 0 10px #0ff3;
+    break-inside: avoid;           /* Verhindert, dass ein Bild zwischen Spalten geteilt wird */
+  }
+  
+  .artwork img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #0ff8;
+    box-shadow: 0 0 10px #0ff6;
+  }
+  
+  .info {
+    font-size: 0.8rem;
+    margin-top: 6px;
+    color: #0ffb;
+    text-align: center;
+  }
+
+  #lightboxOverlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+  }
+  
+  #lightboxOverlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    box-shadow: 0 0 40px #0ff;
+    border: 2px solid #0ff;
+  }
+  
+  .lightbox-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #0ff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+  }
+  
+  .lightbox-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .lightbox-caption {
+    color: #0ff;
+    font-size: 0.95rem;
+    text-align: center;
+    max-width: 80vw;
+  }
+  
+
+  #prevBtn { left: 5%; }
+  #nextBtn { right: 5%; }
+  
+  /* Für mittlere Bildschirme (z. B. Tablets) – 2 Spalten */
+@media (max-width: 900px) {
+    .grid {
+        column-count: 2;
+    }
+  }
+  
+  /* Für kleine Bildschirme (z. B. Handys) – 1 Spalte */
+  @media (max-width: 600px) {
+    .grid {
+        column-count: 1;
+    }
+  }
