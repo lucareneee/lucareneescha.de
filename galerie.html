@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie – Luca Renée Schade</title>
+  <link rel="stylesheet" href="galerie.css">
+</head>
+<body>
+  <header>
+    <h1>✦ Galerie</h1>
+    <p>Eine Auswahl meiner Gemälde</p>
+    <a href="orbit.html" class="back-button">🌌 Zurück</a>
+  </header>
+
+  <main class="grid">
+    <div class="artwork">
+      <img src="img/paint1.jpeg" alt="Gemälde 1">
+      <div class="info">„Eis, grau“ – Acryl auf Leinwand, 70×50 cm</div>
+    </div>
+    <div class="artwork">
+      <img src="img/paint2.jpeg" alt="Gemälde 2">
+      <div class="info">„Eis Cubes“ – Acryl auf Leinwand, 100x50 cm</div>
+    </div>
+    <div class="artwork">
+        <img src="img/paint3.jpeg" alt="Gemälde 3">
+        <div class="info">„Über dich, Tessa“ – Acryl-Collage auf Leinwand, 40×50 cm</div>
+    </div>
+    <div class="artwork">
+        <img src="img/paint4.jpeg" alt="Gemälde 4">
+        <div class="info">„Über dich, Magy“ – Acryl-Collage auf Leinwand, 40×50 cm</div>
+    </div>
+    <div class="artwork">
+        <img src="img/paint5.jpeg" alt="Gemälde 5">
+        <div class="info">„Body“ – Acryl und Marker auf Leinwand, 50x70 cm</div>
+    </div>
+    <!-- weitere Bilder... -->
+  </main>
+  <div id="lightboxOverlay">
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="Großansicht" />
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+    <button id="prevBtn" class="lightbox-arrow" onclick="changeImage(-1)">←</button>
+    <button id="nextBtn" class="lightbox-arrow" onclick="changeImage(1)">→</button>
+  </div>  
+  <script src="galerie.js"></script>
+</body>
+</html>
