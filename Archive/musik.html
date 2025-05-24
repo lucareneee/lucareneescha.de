@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Musik – Luca Renée</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+    <h1 class="glitch">Musik</h1>
+    <p>Hier findest du bald Songs, Demos und Klangspielereien von mir – zum Fühlen, Tanzen und Mitschwingen.</p>
+    
+    <!-- Platz für eingebettete Inhalte wie SoundCloud, Spotify, YouTube -->
+    <!-- Beispiel: -->
+    <!-- <iframe src="..." width="100%" height="166" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe> -->
+  </div>
+
+  <div id="mini-synth">
+    <h2>Mach deine Stimme zu Musik</h2>
+    <div class="synth-container">
+      <div id="keyboard">
+        <!-- Buttons für Tasten -->
+        <button class="key" data-action="record" style="background-image: url('images/record-icon.png');"></button>
+        <button class="key" data-note="C" data-semitone="0" style="background-image: url('images/C.png');"></button>
+        <button class="key" data-note="D" data-semitone="2" style="background-image: url('images/D.png');"></button>
+        <button class="key" data-note="E" data-semitone="4" style="background-image: url('images/E.png');"></button>
+        <button class="key" data-note="F" data-semitone="5" style="background-image: url('images/F.png');"></button>
+        <button class="key" data-note="G" data-semitone="7" style="background-image: url('images/G.png');"></button>
+        <button class="key" data-note="A" data-semitone="9" style="background-image: url('images/A.png');"></button>
+        <button class="key" data-note="H" data-semitone="11" style="background-image: url('images/H.png');"></button>
+        <button class="key" data-note="C2" data-semitone="12" style="background-image: url('images/C.png');"></button>
+        <!-- Reset- und Hilfe-Buttons -->
+        <button class="key" data-action="reset" style="background-image: url('images/reset-icon.png');"></button>
+        <button class="key" data-action="help" style="background-image: url('images/hilfe-icon.png');"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hilfe-Popup -->
+  <div id="help-popup" class="message left" style="display: none;">
+    <span class="date">🛈 Synth-Hilfe</span>
+    <p>🎹 Klick auf eine Taste, um deine Stimme in verschiedenen Tonhöhen zu hören. Wenn du nichts aufgenommen hast, hörst du Standardtöne.</p>
+  </div>
+
+  <!-- Popup für Bestätigungen (z. B. "Aufnahme gelöscht") -->
+  <div id="popup" style="display:none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8); color: white; padding: 10px 20px; border-radius: 10px; font-family: 'VT323', monospace; z-index: 999;">
+  </div>
+
+  <script src="musik-synth.js"></script>
+</body>
+</html>
