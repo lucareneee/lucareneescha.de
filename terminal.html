@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lucaverse_terminal_popup</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+      font-family: 'VT323', monospace;
+      color: #00ff00;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #0ff;
+      border-radius: 50%;
+      box-shadow: 0 0 4px #0ff;
+      animation: driftStar 40s linear infinite;
+    }
+
+    @keyframes driftStar {
+      0%   { transform: translate(0, 0); }
+      50%  { transform: translate(50px, -30px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .terminal-window {
+      position: absolute;
+      width: 600px;
+      height: 500px;
+      background: black;
+      border: 2px solid #00ff00;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 40px #0ff5;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .terminal-header {
+      background: #003300;
+      padding: 5px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: move;
+    }
+
+    .terminal-body {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      font-size: 16px;
+    }
+
+    .terminal-input {
+      display: flex;
+      padding: 10px;
+    }
+
+    .terminal-input span {
+      margin-right: 5px;
+    }
+
+    .terminal-input input {
+      flex: 1;
+      background: black;
+      border: none;
+      color: #00ff00;
+      font-family: 'VT323', monospace;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .close-btn {
+      color: #00ff00;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    img {
+      width: 80%;
+      max-width: 300px;
+      height: auto;
+      margin-top: 10px;
+      border: 1px solid #00ff00;
+      display: block;
+    }
+
+    a {
+      color: #00ffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <div class="terminal-window" id="terminalWindow">
+    <div class="terminal-header" id="dragHeader">
+      <span>Terminal</span>
+      <span class="close-btn" onclick="window.location.href='index.html'">✕</span>
+    </div>
+    <div class="terminal-body" id="terminal">Willkommen im Terminal. Tippe 'hilfe' für Befehle.</div>
+    <div class="terminal-input">
+      <span>&gt;</span>
+      <input type="text" id="command" autofocus />
+    </div>
+  </div>
+
+  <script>
+    const terminal = document.getElementById('terminal');
+    const input = document.getElementById('command');
+
+    const antworten = {
+      'hilfe': `Verfügbare Befehle:\n  galerie – öffnet die Galerie\n  musik – öffnet Musikplayer\n  poesie – öffnet Poesiealbum\n  verlassen – zurück zur Portalseite`,
+
+      'galerie': `Du befindest dich nun in der Galerie. Verfügbare Befehle:\n  foto 1 – foto 10\n  paint 1 – paint 5`,
+
+      'musik': `Musikplayer geladen. Verfügbare Befehle:\n  play einzelstück\n  play danke\n  play wie du scheinst`,
+
+      'poesie': `Poesiealbum geladen. Verfügbare Gedichte:\n  poem 1\n  poem 2`,
+
+      'foto 1': '<img src="img/img1.jpeg" alt="Foto 1">',
+      'foto 2': '<img src="img/img2.jpeg" alt="Foto 2">',
+      'foto 3': '<img src="img/img3.jpeg" alt="Foto 3">',
+      'foto 4': '<img src="img/img4.jpeg" alt="Foto 4">',
+      'foto 5': '<img src="img/img5.jpeg" alt="Foto 5">',
+      'foto 6': '<img src="img/img6.jpeg" alt="Foto 6">',
+      'foto 7': '<img src="img/img7.jpeg" alt="Foto 7">',
+      'foto 8': '<img src="img/img8.jpeg" alt="Foto 8">',
+      'foto 9': '<img src="img/img9.jpeg" alt="Foto 9">',
+      'foto 10': '<img src="img/img10.jpeg" alt="Foto 10">',
+
+      'paint 1': '<img src="img/paint1.jpeg" alt="Gemälde 1">',
+      'paint 2': '<img src="img/paint2.jpeg" alt="Gemälde 2">',
+      'paint 3': '<img src="img/paint3.jpeg" alt="Gemälde 3">',
+      'paint 4': '<img src="img/paint4.jpeg" alt="Gemälde 4">',
+      'paint 5': '<img src="img/paint5.jpeg" alt="Gemälde 5">',
+
+      'play einzelstück': 'Einzelstück spielt... <a href="https://open.spotify.com/intl-de/track/0taUTMBdkBc8Iu7ZwvXLud?si=430bfa45821546ee" target="_blank">Jetzt auf Spotify öffnen</a>',
+      'play danke': 'Danke spielt... <a href="https://open.spotify.com/intl-de/track/3ulSTpP3O8BLhVS9CHjFAM?si=6afc3e4b4dde45cf" target="_blank">Jetzt auf Spotify öffnen</a>',
+      'play wie du scheinst': 'Wie du scheinst spielt... <a href="https://open.spotify.com/intl-de/track/1SCbNeZjVKu6JHEUqXRFfC?si=2ef67fee872b46b4" target="_blank">Jetzt auf Spotify öffnen</a>',
+
+      'poem 1': 'Poem 1:\nBin schon wieder ein bisschen in alles verliebt.',
+      'poem 2': 'Poem 2:\nManchmal wünscht\' ich mir, du könntest mich als Musik sehen.\nDoch Baby, ich kam als Poesie und so werd\' ich gehen.',
+
+      'verlassen': 'Zurück zum Portal: <a href="index.html">Zurück</a>'
+    };
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const cmd = input.value.trim().toLowerCase();
+        const now = new Date();
+        const timestamp = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        terminal.innerHTML += `\n[${timestamp}] > ${cmd}`;
+        if (antworten[cmd]) {
+          terminal.innerHTML += `\n${antworten[cmd]}`;
+        } else {
+          terminal.innerHTML += `\nBefehl nicht erkannt. Tippe 'hilfe' für Optionen.`;
+        }
+        input.value = '';
+        terminal.scrollTop = terminal.scrollHeight;
+      }
+    });
+
+    // Sternenhimmel generieren
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      starsContainer.appendChild(star);
+    }
+
+    // Fenster draggen
+    const terminalWindow = document.getElementById('terminalWindow');
+    const dragHeader = document.getElementById('dragHeader');
+    let offsetX, offsetY, isDragging = false;
+
+    dragHeader.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.clientX - terminalWindow.offsetLeft;
+      offsetY = e.clientY - terminalWindow.offsetTop;
+    });
+
+    document.addEventListener('mouseup', () => { isDragging = false; });
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        terminalWindow.style.left = `${e.clientX - offsetX}px`;
+        terminalWindow.style.top = `${e.clientY - offsetY}px`;
+        terminalWindow.style.transform = `none`;
+      }
+    });
+  </script>
+</body>
+</html>

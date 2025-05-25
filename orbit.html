@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Orbit – Lucaverse</title>
   <link rel="stylesheet" href="style.css">  
+  <link rel="icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
   <div class="layer visible" id="layer-inner">
@@ -12,10 +13,10 @@
     <div class="stars stars-layer-2" id="stars2"></div>
     <div class="stars stars-layer-3" id="stars3"></div>
 
-    <div class="orbit-object" onclick="toggleContact()">📬 Kontakt</div>
-    <div class="orbit-object" onclick="window.location.href='galerie.html'">🖼️ Galerie</div>
+    <div class="orbit-object button" onclick="toggleContact()">Kontakt</div>
+    <div class="orbit-object button" onclick="window.location.href='galerie.html'">Galerie</div>
     <textarea class="editor" id="poemInput" placeholder="Schreib dein Traumfragment…"></textarea>
-    <button class="submit" onclick="addPoem()">➔ Abschicken</button>
+    <button class="submit button" onclick="addPoem()">➔ Abschicken</button>
     <div id="poemOrbitContainer"></div>
 
     <div class="orbit-poem" style="animation: orbitFloat1 40s linear infinite; top: 30%; left: 60%;">„Es steigen Tränen die steile Treppe zu meinen Lidern hinauf. Warum ist der Himmel so bitter drauf? Doch ich hab vom Traurigsein keinen Schimmer. Eigentlich ist es nie wie immer.“</div>
@@ -25,8 +26,10 @@
 
     <div class="music-float" style="top:30%;left:40%;animation-delay:3s;"><a href="https://open.spotify.com/intl-de/track/0taUTMBdkBc8Iu7ZwvXLud?si=430bfa45821546ee" target="_blank">♫ Einzelstück</a></div>
     <div class="music-float" style="top:70%;left:20%;animation-delay:6s;"><a href="https://open.spotify.com/intl-de/track/1SCbNeZjVKu6JHEUqXRFfC?si=2ef67fee872b46b4" target="_blank">♫ Wie du scheinst</a></div>
+    <div class="music-float" style="top:90%;left:50%;animation-delay:4s;"><a href="https://open.spotify.com/intl-de/track/3ulSTpP3O8BLhVS9CHjFAM?si=6afc3e4b4dde45cf" target="_blank">♫ Danke - Luca Renée Version</a></div>
 
-    <div class="orbit-object" onclick="window.location.href='index.html'">🌌 Zurück</div>
+
+    <div class="orbit-object button" onclick="window.location.href='index.html'">Zurück</div>
 
     <!-- Galerie-Elemente -->
     <div class="gallery-item" style="top:10%;left:80%;animation-delay:5s;"><img src="img/img1.jpeg" alt="img1"></div>
@@ -39,6 +42,21 @@
     <div class="gallery-item" style="top:80%;left:15%;animation-delay:11s;"><img src="img/img8.jpeg" alt="img8"></div>
     <div class="gallery-item" style="top:25%;left:85%;animation-delay:9s;"><img src="img/img9.jpeg" alt="img9"></div>
     <div class="gallery-item" style="top:45%;left:35%;animation-delay:13s;"><img src="img/img10.jpeg" alt="img10"></div>
+    
+    <div class="floating-icon spotify" style="top: 70%; left: 35%;">
+        <a href="https://open.spotify.com/intl-de/artist/02SgDs9PxkOJfBNIiYOTjE?si=62SH8Ep6RauymjmBp_8SqQ" target="_blank">
+          <img src="img/spotify.png" alt="Spotify" />
+        </a>
+    </div>
+      
+    <div class="floating-icon insta" style="top: 20%; left: 65%;">
+        <a href="https://www.instagram.com/lucareneeschade/#" target="_blank">
+          <img src="img/insta.png" alt="Instagram" />
+        </a>
+    </div>
+      
+      
+
   </div>
 
   <!-- Popups & Lightbox -->
@@ -60,6 +78,9 @@
     <button id="prevBtn" class="lightbox-arrow" onclick="changeImage(-1)">←</button>
     <button id="nextBtn" class="lightbox-arrow" onclick="changeImage(1)">→</button>
   </div>
+  <a href="trash.html" class="trash-icon">
+    <img src="img/trash-icon.png" alt="Trash Icon">
+  </a>
   <script src="script.js"></script>
 </body>
 </html>

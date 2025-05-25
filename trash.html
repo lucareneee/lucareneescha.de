@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trash Desk</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <style>
+    html, body {
+  height: 100%;
+}
+
+    
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: url('img/tisch.png') center center / cover no-repeat;
+  background-color: #000;
+  font-family: 'Courier New', monospace;
+}
+
+    .element {
+      position: absolute;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .element img {
+      width: auto;
+      height: 75% !important;
+      pointer-events: none;
+      max-width: none;
+      object-fit: contain;
+    }
+
+    .note {
+      width: 200px;
+      height: 200px;
+      background: #ffff88;
+      border: 1px solid #ccc;
+      padding: 8px;
+      font-size: 14px;
+      position: absolute;
+      resize: none;
+      font-family: 'Courier New', monospace;
+    }
+
+    .element img.modell-img {
+  height: 250px !important;
+  width: auto;
+}
+.element img.ruler-img {
+  height: 300px !important;
+  width: auto;
+}
+
+.exit-sticker {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  width: 80px !important;
+  opacity: 0.2;
+  z-index: 0;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.exit-sticker:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 6px #ff00ff);
+  transform: scale(1.05) rotate(-2deg);
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Eigene Notiz -->
+  <textarea class="note element" style="top: 200px; left: 100px;" placeholder="Was hast du verworfen?"></textarea>
+
+  <script>
+    const elements = [
+  'note1.png', 'note2.png', 'note3.png', 'note4.png', 'note5.png', 'note6.png',
+  'postit1.png', 'postit2.png', 'postit3.png', 'postit4.png',
+  'sticker1.png', 'sticker2.png', 'sticker3.png', 'sticker4.png', 'sticker5.png', 'sticker6.png',
+  'lineal.png', 'modell.png'
+];
+
+function randomPos(max, offset = 120) {
+  return Math.floor(Math.random() * (max - offset));
+}
+
+function randomRotation() {
+  return (Math.random() * 30 - 15).toFixed(1); // -15° bis +15°
+}
+
+elements.forEach(src => {
+  const el = document.createElement('div');
+  el.className = 'element';
+
+  // 👇 Extra Klassen für bestimmte Elemente
+  const isModel = src === 'modell.png';
+  const isRuler = src === 'lineal.png';
+  const extraClass = isModel ? 'modell-img' : isRuler ? 'ruler-img' : '';
+
+  el.style.left = randomPos(window.innerWidth) + 'px';
+  el.style.top = randomPos(window.innerHeight) + 'px';
+  el.style.transform = `rotate(${randomRotation()}deg)`;
+  el.innerHTML = `<img src="img/${src}" alt="" draggable="false" class="${extraClass}">`;
+  document.body.appendChild(el);
+});
+
+
+function enableDrag(el) {
+  let shiftX, shiftY;
+
+  function onMouseDown(e) {
+    shiftX = e.clientX - el.getBoundingClientRect().left;
+    shiftY = e.clientY - el.getBoundingClientRect().top;
+
+    el.style.zIndex = 1000;
+    el.style.position = 'absolute';
+
+    moveAt(e.pageX, e.pageY);
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  }
+
+  function moveAt(pageX, pageY) {
+    el.style.left = pageX - shiftX + 'px';
+    el.style.top = pageY - shiftY + 'px';
+  }
+
+  function onMouseMove(e) {
+    moveAt(e.pageX, e.pageY);
+  }
+
+  function onMouseUp() {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  }
+
+  el.addEventListener('mousedown', onMouseDown);
+  el.ondragstart = () => false;
+}
+
+window.onload = () => {
+  document.querySelectorAll('.element').forEach(enableDrag);
+};
+
+// exit-Sticker
+const exit = document.createElement('div');
+exit.className = 'exit-sticker';
+exit.innerHTML = `<img src="img/exit.png" alt="exit">`;
+exit.onclick = () => window.location.href = 'index.html'; // oder 'orbit.html'
+document.body.appendChild(exit);
+
+  </script>
+  
+</body>
+</html>

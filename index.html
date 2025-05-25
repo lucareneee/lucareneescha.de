@@ -4,17 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Im Lucaverse</title>
-  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <style>
+    
+  </style>
 </head>
 <body>
   <div class="layer visible" id="layer-outer">
     <div class="stars stars-layer-1" id="stars1"></div>
     <div class="stars stars-layer-2" id="stars2"></div>
     <div class="stars stars-layer-3" id="stars3"></div>
-    <div class="planet"></div>
     <div class="portal" onclick="window.location.href='orbit.html'">✦ Eintreten</div>
+    <div class="terminal-label-container" onclick="openTerminal()">
+      <span class="terminal-label">
+        <span class="full-hint">Gib mal im Terminal self-destruct oder warp me ein</span>
+        <span class="static">Gib mal im </span>Terminal
+      </span>
+    </div>
     <div class="absurd-text">"Du bist jetzt zwischen Möglichkeit und Erinnerung..."</div>
   </div>
-  <script src="script.js"></script>
+
+  <div class="terminal-overlay" id="terminalOverlay">
+    <div class="terminal-window" id="terminalWindow">
+      <div class="terminal-header" id="dragHeader">
+        <span>Terminal</span>
+        <span class="close-btn" onclick="document.getElementById('terminalOverlay').style.display='none'">✕</span>
+      </div>
+      <div class="terminal-body" id="terminal">Willkommen im Terminal. Tippe 'hilfe' für Befehle.</div>
+      <div class="terminal-input">
+        <span>&gt;</span>
+        <input type="text" id="command" autofocus />
+      </div>
+    </div>
+  </div>
+  <script src="index.js"></script>
 </body>
 </html>

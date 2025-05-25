@@ -95,4 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => popup.classList.remove('active'), 5000);
     };
   });
+
+  const overlay = document.getElementById('terminalOverlay');
+const windowBox = document.getElementById('terminalWindow');
+
+function openTerminal() {
+  overlay.style.display = 'flex';
+  windowBox.style.animation = 'glitchIn 0.5s ease-out';
+  setTimeout(() => windowBox.style.animation = '', 500);
+}
+
   
