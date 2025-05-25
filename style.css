@@ -425,8 +425,8 @@ html, body {
     position: fixed;
     bottom: 50px;
     right: 50px;
-    width: 40px;
-    height: 40px;
+    width: 40px !important;
+    height: 40px !important;
     z-index: 50;
     opacity: 0.8;
     transition: transform 0.3s ease, opacity 0.3s ease;
