@@ -1,4 +1,3 @@
-
 const shelvesData = [
   {
     name: "🔥 Trending in Europe",
