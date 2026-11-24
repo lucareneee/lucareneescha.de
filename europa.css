@@ -551,3 +551,443 @@ footer p span { margin-left: 12px; color: #77727e; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+
+
+/* =================================
+   INTERAKTIVE EPISODEN
+================================= */
+
+.episode-hero {
+  padding: 55px;
+  border-radius: 10px;
+  border: 1px solid #ffffff18;
+  background:
+    radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--episode-accent) 38%, transparent), transparent 43%),
+    linear-gradient(120deg, #211824, #111019);
+}
+
+.episode-label {
+  color: var(--episode-accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.episode-hero h1 {
+  font: 700 clamp(38px, 7vw, 68px)/.95 'Space Grotesk';
+  letter-spacing: -3px;
+  margin: 20px 0;
+}
+
+.episode-hero p {
+  color: #d0cbd8;
+  max-width: 650px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.episode-meta {
+  margin-top: 30px;
+  color: #aaa3b2;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.episode-meta span { color: var(--episode-accent); margin: 0 8px; }
+
+.episode-visual {
+  margin: 25px 0;
+  padding: 30px;
+  background: #15141c;
+  border: 1px solid #ffffff16;
+  border-radius: 9px;
+}
+
+.visual-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.visual-heading span {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.visual-heading strong {
+  color: var(--cyan);
+  font: 700 12px 'Space Grotesk';
+  letter-spacing: 1px;
+}
+
+/* 30%-Kataloggrafik */
+
+.quota-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.quota-tile {
+  aspect-ratio: 1.5;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ffffff22;
+  border-radius: 5px;
+  background: #292633;
+  color: #77727e;
+  font-size: 22px;
+}
+
+.quota-tile.european {
+  color: #091516;
+  background: var(--cyan);
+  box-shadow: 0 0 18px #5ce5e633;
+}
+
+.visual-caption {
+  color: #898492;
+  font-size: 11px;
+  line-height: 1.6;
+  margin: 20px 0 0;
+}
+
+/* Filmvergleich */
+
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 15px;
+  align-items: center;
+}
+
+.comparison-side {
+  min-height: 220px;
+  padding: 25px 15px;
+  border-radius: 7px;
+  text-align: center;
+  background: #ffffff09;
+  border: 1px solid #ffffff20;
+}
+
+.comparison-side.hollywood { border-color: #ff4c8355; }
+.comparison-side.europe { border-color: #5ce5e655; }
+
+.comparison-symbol {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.comparison-side h3 {
+  font: 700 20px 'Space Grotesk';
+  margin: 0;
+}
+
+.comparison-side p {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.comparison-side strong {
+  display: block;
+  font: 700 25px 'Space Grotesk';
+  margin-top: 20px;
+}
+
+.comparison-side small {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.hollywood h3, .hollywood strong { color: #ff709a; }
+.europe h3, .europe strong { color: var(--cyan); }
+
+.comparison-vs {
+  color: #aaa;
+  font: 800 17px 'Space Grotesk';
+}
+
+/* Musik-Geldfluss */
+
+.money-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.flow-step {
+  flex: 1;
+  min-width: 0;
+  padding: 17px 8px;
+  text-align: center;
+  border: 1px solid #ffffff25;
+  background: #ffffff09;
+  border-radius: 6px;
+}
+
+.flow-step span {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: #b99aff;
+  color: #17111b;
+  font-weight: 800;
+}
+
+.flow-step strong {
+  display: block;
+  font-size: 11px;
+  color: #d8c8ff;
+}
+
+.flow-step small {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  margin-top: 7px;
+}
+
+.flow-arrow { color: #b99aff; }
+
+/* Förderung */
+
+.funding-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.funding-grid div {
+  min-height: 130px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 7px;
+  background: #ffffff0b;
+  border: 1px solid #ffffff1a;
+  text-align: center;
+  font-size: 25px;
+}
+
+.funding-grid strong {
+  color: #d9c4ff;
+  font-size: 12px;
+}
+
+.funding-grid small {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+/* Interaktive Aufklappelemente */
+
+.episode-interaction {
+  margin-top: 25px;
+  padding: 28px;
+  border: 1px solid #ffffff18;
+  border-radius: 8px;
+  background: #111019;
+}
+
+.episode-interaction h3 {
+  font: 700 19px 'Space Grotesk';
+  margin: 0 0 10px;
+}
+
+.episode-interaction p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.reveal-button {
+  margin-top: 10px;
+  padding: 11px 15px;
+  color: var(--cyan);
+  background: transparent;
+  border: 1px solid #5ce5e655;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.reveal-button:hover {
+  background: #5ce5e615;
+}
+
+.reveal-answer {
+  margin-top: 15px;
+  padding: 15px;
+  color: #d5d0dc;
+  background: #5ce5e610;
+  border-left: 3px solid var(--cyan);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.placeholder-visual {
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #ffffff35;
+  border-radius: 7px;
+  background: #ffffff06;
+  text-align: center;
+  padding: 20px;
+}
+
+.placeholder-symbol {
+  font-size: 42px;
+  color: var(--pink);
+}
+
+.placeholder-visual p {
+  font: 700 13px 'Space Grotesk';
+  letter-spacing: 1px;
+}
+
+.placeholder-visual small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.episode-section-heading {
+  margin: 45px 0 20px;
+}
+
+.episode-section-heading h2 {
+  font: 700 30px 'Space Grotesk';
+  margin: 0;
+}
+
+.episode-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 13px;
+}
+
+.episode-card {
+  padding: 23px;
+  border-radius: 7px;
+  background: #15141c;
+  border: 1px solid #ffffff16;
+}
+
+.episode-card > span {
+  color: var(--pink);
+  font: 700 12px 'Space Grotesk';
+}
+
+.episode-card h3 {
+  font: 700 17px 'Space Grotesk';
+  margin: 15px 0 10px;
+}
+
+.episode-card p {
+  color: #c4bfcc;
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.episode-end {
+  margin-top: 30px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  background: #211624;
+  border: 1px solid #ff3d9133;
+  border-radius: 8px;
+}
+
+.episode-end h2 {
+  font: 700 27px 'Space Grotesk';
+  margin: 0;
+}
+
+.episode-end p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Challenge */
+
+.challenge-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.challenge-option {
+  min-height: 120px;
+  padding: 18px;
+  text-align: left;
+  color: white;
+  background: #ffffff09;
+  border: 1px solid #ffffff30;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.challenge-option:hover,
+.challenge-option.selected {
+  border-color: var(--pink);
+  background: #ff3d9118;
+}
+
+.challenge-option strong {
+  display: block;
+  margin-bottom: 9px;
+  font: 700 15px 'Space Grotesk';
+}
+
+.challenge-option small {
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 11px;
+}
+
+.challenge-feedback {
+  min-height: 50px;
+  margin-top: 20px;
+  padding: 15px;
+  color: var(--cyan);
+  background: #5ce5e610;
+  border-left: 3px solid var(--cyan);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 650px) {
+  .episode-hero { padding: 30px 23px; }
+  .episode-visual { padding: 20px 15px; }
+  .quota-grid { gap: 5px; }
+  .comparison { gap: 6px; }
+  .comparison-side { padding: 15px 7px; min-height: 190px; }
+  .comparison-side h3 { font-size: 15px; }
+  .comparison-side strong { font-size: 17px; }
+  .comparison-vs { font-size: 12px; }
+  .money-flow { flex-direction: column; }
+  .flow-step { width: 100%; }
+  .flow-arrow { transform: rotate(90deg); }
+  .funding-grid { grid-template-columns: repeat(2, 1fr); }
+  .episode-cards { grid-template-columns: 1fr; }
+  .challenge-options { grid-template-columns: 1fr; }
+}
