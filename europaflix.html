@@ -1,1 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090d18">
+  <title>EUROPAFLIX — The Funding Game</title>
+  <link rel="stylesheet" href="europaflix.css">
+  <script src="europaflix.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="EUROPAFLIX Startseite">EUROPA<span>FLIX</span><small>THE FUNDING GAME</small></a>
+    <div class="top-actions">
+      <span class="status-dot"></span>
+      <span class="top-label">EUROPEAN CULTURE SIMULATOR</span>
+      <button class="ghost-btn" id="glossaryTop" type="button">GLOSSAR <span>＋</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro-panel" id="introPanel">
+      <div class="eyebrow"><span class="eyebrow-line"></span> INTERACTIVE LEARNING EXPERIENCE · 2026</div>
+      <h1>YOUR IDEA.<br><em>EUROPEAN</em> SUPPORT.</h1>
+      <p class="intro-copy">Du hast eine kreative Idee. Aber wie wird daraus ein Projekt, das Menschen über Ländergrenzen hinweg erreicht? Finde heraus, welche europäischen Förderwege zu deinem Vorhaben passen könnten.</p>
+      <div class="intro-stats">
+        <div><strong>02</strong><span>BRANCHEN</span></div>
+        <div><strong>06</strong><span>ENTSCHEIDUNGEN</span></div>
+        <div><strong>01</strong><span>DEIN PROJEKT</span></div>
+      </div>
+      <button class="primary-btn" id="startGame">START YOUR JOURNEY <span>↗</span></button>
+      <p class="fine-print">Lernsimulation – keine echte Förderberatung und keine Förderzusage.</p>
+      <div class="orbit orbit-one"></div>
+      <div class="orbit orbit-two"></div>
+    </section>
+
+    <section class="game-shell hidden" id="gameShell" aria-live="polite">
+      <aside class="game-sidebar">
+        <div class="side-kicker">YOUR CAREER MODE</div>
+        <div class="player-avatar" id="playerAvatar">?</div>
+        <div class="player-name" id="sidePlayerName">PLAYER ONE</div>
+        <div class="player-track" id="sideTrack">NOT SELECTED</div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>PROGRESS</span><b id="progressText">0%</b></div>
+          <div class="progress-track"><div id="progressBar"></div></div>
+        </div>
+        <nav class="step-nav" id="stepNav">
+          <div class="nav-step active"><i>01</i><span>Player setup</span></div>
+          <div class="nav-step"><i>02</i><span>Choose your field</span></div>
+          <div class="nav-step"><i>03</i><span>Your project</span></div>
+          <div class="nav-step"><i>04</i><span>Find support</span></div>
+          <div class="nav-step"><i>05</i><span>Build your plan</span></div>
+          <div class="nav-step"><i>06</i><span>Your result</span></div>
+        </nav>
+        <div class="sidebar-note">EUROPAFLIX<br><span>CREATIVE EUROPE SIMULATOR</span></div>
+      </aside>
+
+      <section class="game-content">
+        <div class="game-topline">
+          <span id="chapterLabel">CHAPTER 01 / PLAYER SETUP</span>
+          <span class="live-label">● SIMULATION LIVE</span>
+        </div>
+        <div id="stepContent"></div>
+        <div class="game-controls" id="gameControls">
+          <button class="text-btn" id="backBtn" type="button">← BACK</button>
+          <button class="primary-btn small" id="nextBtn" type="button">CONTINUE <span>→</span></button>
+        </div>
+      </section>
+    </section>
+
+    <section class="certificate hidden" id="certificate">
+      <div class="certificate-actions no-print">
+        <button class="ghost-btn" id="restartBtn" type="button">↻ PLAY AGAIN</button>
+        <button class="primary-btn small" id="printBtn" type="button">PRINT / SAVE PDF ↗</button>
+      </div>
+      <div class="certificate-paper" id="certificatePaper">
+        <div class="cert-frame">
+          <div class="cert-brand">EUROPA<span>FLIX</span></div>
+          <div class="cert-eyebrow">EUROPEAN CULTURAL FUNDING · LEARNING SIMULATION</div>
+          <div class="cert-medal">✳</div>
+          <h2>CERTIFICATE<br><em>OF EXPLORATION</em></h2>
+          <p class="cert-small">THIS CERTIFICATE IS AWARDED TO</p>
+          <div class="cert-name" id="certName">PLAYER NAME</div>
+          <p class="cert-description">for completing the EUROPAFLIX Funding Game and exploring how European cultural cooperation can support creative projects.</p>
+          <div class="cert-project">
+            <div><span>YOUR FIELD</span><strong id="certField">FILM</strong></div>
+            <div><span>YOUR PROJECT</span><strong id="certProject">PROJECT TITLE</strong></div>
+            <div><span>FUNDING ROUTE EXPLORED</span><strong id="certRoute">CREATIVE EUROPE</strong></div>
+          </div>
+          <div class="cert-footer">
+            <span>EUROPAFLIX · THE FUNDING GAME</span>
+            <span id="certDate"></span>
+          </div>
+        </div>
+      </div>
+      <div class="result-wrap" id="resultWrap"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>EUROPAFLIX © 2026</span>
+    <span>LEARN · CREATE · CONNECT</span>
+    <button id="sourcesBtn" class="footer-link" type="button">SOURCES & FACT CHECK</button>
+  </footer>
+
+  <dialog id="glossaryDialog" class="info-dialog">
+    <div class="dialog-head">
+      <div>
+        <div class="side-kicker">EUROPAFLIX KNOWLEDGE BASE</div>
+        <h2>THE GLOSSARY</h2>
+      </div>
+      <button class="close-dialog" data-close="glossaryDialog" aria-label="Schließen">×</button>
+    </div>
+    <div class="glossary-search-wrap">
+      <input id="glossarySearch" type="search" placeholder="Begriff suchen …">
+    </div>
+    <div id="glossaryList" class="glossary-list"></div>
+  </dialog>
+
+  <dialog id="termDialog" class="info-dialog term-dialog">
+    <button class="close-dialog" data-close="termDialog" aria-label="Schließen">×</button>
+    <div class="side-kicker">QUICK KNOWLEDGE</div>
+    <h2 id="termTitle"></h2>
+    <p id="termBody"></p>
+    <div class="term-example" id="termExample"></div>
+  </dialog>
+
+  <dialog id="sourcesDialog" class="info-dialog">
+    <div class="dialog-head">
+      <div>
+        <div class="side-kicker">TRANSPARENCY FIRST</div>
+        <h2>FACTS & SOURCES</h2>
+      </div>
+      <button class="close-dialog" data-close="sourcesDialog" aria-label="Schließen">×</button>
+    </div>
+    <div class="source-content" id="sourceContent"></div>
+  </dialog>
+</body>
+</html>
  
