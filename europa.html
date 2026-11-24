@@ -1,1 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europa Explorer – Culture & Media</title>
+    <link rel="stylesheet" href="europa.css">
+    <script src="europa.js" defer></script>
+</head>
+<body>
+
+<header class="topbar">
+    <a href="#" class="logo" onclick="showHome()">EUROPA<span>.</span></a>
+    <nav>
+        <a href="#explore">Explore</a>
+        <a href="#quiz">Quiz</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- STARTSEITE -->
+    <section id="home" class="page active">
+
+        <div class="hero">
+            <p class="eyebrow">EUROPEAN CULTURE / MEDIA / POLITICS</p>
+            <h1>WHO CONTROLS<br>THE CULTURE<span>?</span></h1>
+            <p class="intro">
+                Film, Musik und Medien in Europa.
+                Wie schützt und fördert die EU die europäische Kultur-
+                und Kreativwirtschaft?
+            </p>
+            <button class="main-button" onclick="scrollToMap()">
+                EXPLORE THE TOPICS ↓
+            </button>
+        </div>
+
+        <section id="explore" class="mindmap-section">
+            <p class="eyebrow">01 / EXPLORE</p>
+            <h2>THE BIG PICTURE</h2>
+            <p class="section-intro">
+                Sechs Perspektiven auf die europäische Kultur.
+                Klicke auf einen Bereich, um mehr zu erfahren.
+            </p>
+
+            <div class="mindmap">
+
+                <div class="mindmap-center">
+                    EUROPEAN<br>CULTURE
+                </div>
+
+                <button class="node film"
+                    onclick="openTopic('film')">
+                    🎬 FILM
+                    <small>Hollywood vs. Europe</small>
+                </button>
+
+                <button class="node music"
+                    onclick="openTopic('music')">
+                    🎵 MUSIC
+                    <small>Who gets paid?</small>
+                </button>
+
+                <button class="node streaming"
+                    onclick="openTopic('streaming')">
+                    📺 STREAMING
+                    <small>The 30% rule</small>
+                </button>
+
+                <button class="node media"
+                    onclick="openTopic('media')">
+                    🌐 MEDIA
+                    <small>Global platforms</small>
+                </button>
+
+                <button class="node politics"
+                    onclick="openTopic('politics')">
+                    🏛️ EU POLITICS
+                    <small>Who decides?</small>
+                </button>
+
+                <button class="node economy"
+                    onclick="openTopic('economy')">
+                    💶 ECONOMY
+                    <small>Culture & money</small>
+                </button>
+
+            </div>
+        </section>
+
+        <!-- INFOKARTEN -->
+        <section id="topic-area" class="topic-area hidden">
+            <div class="topic-header">
+                <p class="eyebrow">02 / DEEP DIVE</p>
+                <button class="back-button" onclick="showHome()">
+                    ← BACK TO MAP
+                </button>
+            </div>
+
+            <div id="topic-content"></div>
+        </section>
+
+        <!-- QUIZ -->
+        <section id="quiz" class="quiz-section">
+            <p class="eyebrow">03 / TEST YOUR KNOWLEDGE</p>
+            <h2>HOW MUCH DO YOU KNOW?</h2>
+            <p>Teste dein Wissen über Europas Kultur und die EU.</p>
+
+            <div class="quiz-card">
+                <div id="quiz-progress">QUESTION 1 / 3</div>
+                <h3 id="quiz-question">Lade Frage...</h3>
+
+                <div id="quiz-answers" class="answers"></div>
+
+                <p id="quiz-feedback"></p>
+
+                <button id="next-question" class="main-button hidden"
+                    onclick="nextQuestion()">
+                    NEXT QUESTION →
+                </button>
+            </div>
+        </section>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>EUROPA.EXPLORER — A PROJECT ABOUT EUROPEAN CULTURE</p>
+    <p>Made for educational purposes · 2026</p>
+</footer>
+
+</body>
+</html>
  
