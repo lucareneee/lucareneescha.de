@@ -1389,3 +1389,364 @@ main {
     page-break-inside: avoid;
   }
 }
+
+/* =================================
+   EUROPAFLIX — EDITORIAL REDESIGN
+   ================================= */
+
+:root {
+  --paper: #F5F4F0;
+  --paper-dark: #E9E7E1;
+  --ink: #20242D;
+  --muted: #737984;
+  --pink: #B52C64;
+  --pink-light: #F3E4EA;
+  --blue: #526D9B;
+  --blue-light: #E5EAF1;
+  --yellow: #D9B96E;
+  --green: #648C76;
+  --line: #DAD9D3;
+  --shadow: 0 3px 12px rgba(32,36,45,.06);
+}
+
+body {
+  background: var(--paper);
+  font-family: "Nunito", sans-serif;
+}
+
+.topbar {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand-mark {
+  border: 0;
+  border-radius: 3px;
+  background: var(--pink);
+  color: white;
+  transform: none;
+}
+
+.brand-pink {
+  color: var(--pink);
+}
+
+.small-button {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+}
+
+.small-button:hover {
+  background: var(--pink-light);
+}
+
+.primary-button {
+  border: 0;
+  border-radius: 4px;
+  background: var(--pink);
+  box-shadow: none;
+  letter-spacing: .08em;
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(181,44,100,.18);
+}
+
+.primary-button:active {
+  transform: none;
+  box-shadow: none;
+}
+
+.secondary-button,
+.back-button {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+}
+
+.secondary-button:hover,
+.back-button:hover {
+  background: var(--pink-light);
+}
+
+/* INTRO */
+
+.intro-panel {
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #FBFAF7;
+  box-shadow: var(--shadow);
+}
+
+.intro-copy h1 {
+  letter-spacing: -3px;
+  font-weight: 800;
+}
+
+.intro-copy h1 span {
+  color: var(--pink);
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+}
+
+.intro-art {
+  border-radius: 5px;
+  background: #E9E5DF;
+  transform: none;
+}
+
+.sun-shape {
+  background: #D9B96E;
+  opacity: .75;
+}
+
+.intro-sticker {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  box-shadow: none;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  transform: none;
+}
+
+.sticker-one {
+  background: #FBFAF7;
+}
+
+.sticker-two {
+  background: var(--blue-light);
+}
+
+/* GAME SHELL */
+
+.sidebar,
+.game-content {
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #FBFAF7;
+  box-shadow: var(--shadow);
+}
+
+.sidebar {
+  padding: 22px;
+}
+
+.character-stage {
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #EEECE6;
+}
+
+.character-scene {
+  border-radius: 3px;
+  background: #E4E1DA;
+}
+
+.scene-sun {
+  background: #D9B96E;
+  opacity: .8;
+}
+
+.scene-star {
+  color: var(--pink);
+}
+
+.character-caption {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 500;
+}
+
+/* CHARACTER ACCESSORIES */
+
+.character-accessory {
+  top: -7px;
+  right: -43px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  transform: none;
+}
+
+.accessory-tag {
+  display: block;
+  width: max-content;
+  max-width: 115px;
+  padding: 5px 7px;
+  border-radius: 2px;
+  background: #FBFAF7;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(32,36,45,.05);
+}
+
+.accessory-0 {
+  border-left: 3px solid var(--pink);
+}
+
+.accessory-1 {
+  border-left: 3px solid var(--blue);
+}
+
+.accessory-2 {
+  border-left: 3px solid var(--yellow);
+}
+
+.accessory-3 {
+  border-left: 3px solid var(--green);
+}
+
+.character-shirt {
+  border: 0;
+  border-radius: 13px 13px 3px 3px;
+}
+
+.character-head {
+  border: 0;
+}
+
+.character-hair {
+  border: 0;
+}
+
+.character-arm,
+.character-leg {
+  border: 0;
+}
+
+/* NAVIGATION */
+
+.nav-step {
+  border-radius: 3px;
+}
+
+.nav-step.active {
+  color: var(--pink);
+  background: var(--pink-light);
+}
+
+.progress-track {
+  border-radius: 2px;
+}
+
+.progress-bar {
+  background: var(--pink);
+  border-radius: 2px;
+}
+
+/* CONTENT */
+
+.step-heading {
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.step-heading em {
+  color: var(--pink);
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.choice-card {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #FBFAF7;
+  min-height: 135px;
+}
+
+.choice-card:hover {
+  transform: none;
+  border-color: var(--blue);
+  box-shadow: none;
+}
+
+.choice-card.selected {
+  border: 1px solid var(--pink);
+  background: var(--pink-light);
+  box-shadow: inset 3px 0 var(--pink);
+}
+
+.choice-icon {
+  font-size: 21px;
+}
+
+.inline-note,
+.scenario-box,
+.funding-callout,
+.example-box {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #F0EFEA;
+}
+
+.scenario-box {
+  background: var(--blue-light);
+}
+
+.funding-callout {
+  background: var(--pink-light);
+  border-color: #E4C6D2;
+}
+
+.funding-callout h3 {
+  color: var(--pink);
+}
+
+.term {
+  border-bottom: 1px solid var(--blue);
+}
+
+/* CERTIFICATE */
+
+.certificate-paper {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #FBFAF7;
+  box-shadow: var(--shadow);
+}
+
+.certificate-stamp,
+.certificate-seal {
+  border-radius: 3px;
+  transform: none;
+}
+
+.certificate-paper h2 {
+  color: var(--pink);
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+}
+
+.certificate-details div {
+  border-radius: 3px;
+  background: var(--paper);
+}
+
+.popup-dialog {
+  border-radius: 5px;
+  box-shadow: 0 10px 40px rgba(32,36,45,.15);
+}
+
+.glossary-item {
+  border-radius: 3px;
+}
+
+@media (max-width: 560px) {
+  .character-accessory {
+    right: -27px;
+    font-size: 7px;
+  }
+
+  .accessory-tag {
+    padding: 4px 5px;
+    max-width: 95px;
+  }
+}
