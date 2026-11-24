@@ -1,4 +1,5 @@
 const shelvesData = [
+  alert("NEUE EUROPAFLIX-JAVASCRIPT-DATEI GELADEN!");
   {
     name: "🔥 Trending in Europe",
     subtitle: "Die großen Fragen unserer Medienwelt",
