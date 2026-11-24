@@ -190,51 +190,63 @@ function updateCharacter() {
   const symbol = $("#shirtSymbol");
   const caption = $("#characterCaption");
 
-  let accessoryIcon = "";
-  let shirtColor = "#f45b9a";
+  let items = [];
+  let shirtColor = "#B52C64";
   let shirtSymbol = "✳";
-  let captionText = "READY FOR A QUEST";
+  let captionText = "YOUR CREATIVE JOURNEY";
 
+  // Rolle
   if (state.role === "creator") {
-    accessoryIcon = "🎨";
-    captionText = "THE CREATIVE MIND";
+    items.push("✎ CREATIVE");
+  } else if (state.role === "producer") {
+    items.push("▤ PRODUCER");
   }
 
-  if (state.role === "producer") {
-    accessoryIcon = "📋";
-    captionText = "THE PROJECT PLANNER";
-  }
-
+  // Branche
   if (state.field === "film") {
-    accessoryIcon = state.role === "producer" ? "🎬" : "🎥";
-    shirtColor = "#5278df";
+    shirtColor = "#526D9B";
     shirtSymbol = "▶";
-    captionText = "FILM ADVENTURE";
-  }
-
-  if (state.field === "music") {
-    accessoryIcon = state.role === "producer" ? "🎧" : "🎤";
-    shirtColor = "#a77bc4";
+    items.push("FILM");
+  } else if (state.field === "music") {
+    shirtColor = "#8A648F";
     shirtSymbol = "♫";
-    captionText = "MUSIC ADVENTURE";
+    items.push("MUSIC");
   }
 
-  if (state.project === "coproduction") accessoryIcon = "🎬";
-  if (state.project === "development") accessoryIcon = "✏️";
-  if (state.project === "distribution") accessoryIcon = "📽️";
-  if (state.project === "cooperation") accessoryIcon = "🎶";
-  if (state.project === "mobility") accessoryIcon = "✈️";
-  if (state.project === "showcase") accessoryIcon = "🎤";
+  // Projektziel
+  const projectAccessories = {
+    development: "✎ DEVELOPMENT",
+    coproduction: "▣ CO-PRODUCTION",
+    distribution: "◉ DISTRIBUTION",
+    cooperation: "♫ COOPERATION",
+    mobility: "↗ MOBILITY",
+    showcase: "★ SHOWCASE"
+  };
 
+  if (state.project && projectAccessories[state.project]) {
+    items.push(projectAccessories[state.project]);
+  }
+
+  // Förderroute
   if (state.route === "eu") {
-    captionText = "EUROPEAN FUNDING QUEST";
+    items.push("EUROPE");
+    captionText = "EUROPEAN FUNDING ROUTE";
+  } else if (state.route === "national") {
+    items.push("NATIONAL");
+    captionText = "NATIONAL FUNDING ROUTE";
   }
 
-  if (state.route === "national") {
-    captionText = "NATIONAL FUNDING QUEST";
-  }
+  if (state.step === 0) captionText = "CHOOSE YOUR ROLE";
+  if (state.step === 1) captionText = "CHOOSE YOUR INDUSTRY";
+  if (state.step === 2) captionText = "DEFINE YOUR PROJECT";
+  if (state.step === 3) captionText = "FIND YOUR FUNDING";
+  if (state.step === 4) captionText = "BUILD YOUR PLAN";
+  if (state.step === 5) captionText = "YOUR PROJECT OUTLOOK";
 
-  accessory.textContent = accessoryIcon;
+  accessory.innerHTML = items.map((item, index) =>
+    `<span class="accessory-tag accessory-${index}">${item}</span>`
+  ).join("");
+
   shirt.style.background = shirtColor;
   symbol.textContent = shirtSymbol;
   caption.textContent = captionText;
