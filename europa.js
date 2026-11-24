@@ -1,6 +1,7 @@
-const titles = [
+
+const shelvesData = [
   {
-    shelf: "🔥 Trending in Europe",
+    name: "🔥 Trending in Europe",
     subtitle: "Die großen Fragen unserer Medienwelt",
     items: [
       ["Hollywood vs. Europe", "Wer dominiert die Leinwand?", "FILM INDUSTRY", "#ff4c83", "01"],
@@ -11,7 +12,7 @@ const titles = [
     ]
   },
   {
-    shelf: "🎬 Hollywood vs. Europe",
+    name: "🎬 Hollywood vs. Europe",
     subtitle: "Film, Kino und die europäische Filmbranche",
     items: [
       ["The Box Office Battle", "Europäische Filme im Wettbewerb", "FILM MARKET", "#ff4c83", "€"],
@@ -22,7 +23,7 @@ const titles = [
     ]
   },
   {
-    shelf: "🎧 Behind the Music",
+    name: "🎧 Behind the Music",
     subtitle: "Streaming, Geld und kreative Freiheit",
     items: [
       ["The Spotify Question", "Wie funktioniert die Vergütung?", "STREAMING ECONOMY", "#b99aff", "♫"],
@@ -33,7 +34,7 @@ const titles = [
     ]
   },
   {
-    shelf: "📺 Who controls the Stream?",
+    name: "📺 Who controls the Stream?",
     subtitle: "Streamingplattformen und die Regeln der EU",
     items: [
       ["The 30% Rule", "Die europäische Quote erklärt", "AVMSD", "#5ce5e6", "30%"],
@@ -44,7 +45,7 @@ const titles = [
     ]
   },
   {
-    shelf: "🌍 Culture Without Borders",
+    name: "🌍 Culture Without Borders",
     subtitle: "Vielfalt, Identität und Europas Zukunft",
     items: [
       ["Many Voices, One Europe", "Was bedeutet kulturelle Vielfalt?", "CULTURAL DIVERSITY", "#f6d65b", "✦"],
@@ -55,7 +56,7 @@ const titles = [
     ]
   },
   {
-    shelf: "🏛️ Inside the EU",
+    name: "🏛️ Inside the EU",
     subtitle: "Wer entscheidet eigentlich über Kulturpolitik?",
     items: [
       ["The European Commission", "Wer macht Vorschläge und setzt Programme um?", "EU INSTITUTIONS", "#5ce5e6", "EC"],
@@ -67,72 +68,81 @@ const titles = [
   }
 ];
 
-// Allgemeine Platzhalter-Inhalte für die einzelnen Titel.
-// Später können diese mit echten Fakten, Quellen und Länderbeispielen gefüllt werden.
-const topicDetails = {
+// Inhalte für einzelne Episoden.
+// Noch offene Stellen sind bewusst als Platzhalter gekennzeichnet.
+const episodes = {
   "Hollywood vs. Europe": {
-    intro: "Europäische Filme konkurrieren auf einem globalen Markt, der stark von US-amerikanischen Produktionen geprägt ist. Wie kann Europa seine eigene Filmbranche stärken?",
-    cards: [
-      ["DAS PROBLEM", "Hollywood-Produktionen erreichen weltweit ein großes Publikum. Europäische Filme haben es oft schwerer, international sichtbar zu werden.", "[PLATZHALTER: Marktanteile / Zahlen]"],
-      ["DIE AKTEURE", "Filmproduktionen, Kinos, Verleihe, Förderinstitutionen und nationale Filmfonds.", "[PLATZHALTER: Länderbeispiele]"],
-      ["DIE EU", "Mit Creative Europe MEDIA unterstützt die EU unter anderem Filmproduktion, Verleih, Festivals und internationale Zusammenarbeit.", "[PLATZHALTER: Förderbeispiele]"],
-      ["DIE DISKUSSION", "Wie viel Förderung braucht europäisches Kino? Und wie lässt sich Vielfalt erhalten, ohne den Wettbewerb einzuschränken?", "[PLATZHALTER: Positionen / Kritik]"]
+    intro: "Zwei Filmwelten, ein Kinomarkt. Wie behauptet sich das europäische Kino gegen die internationale Konkurrenz?",
+    accent: "#ff4c83",
+    kind: "film",
+    sections: [
+      ["DAS PROBLEM", "US-amerikanische Produktionen sind international sehr präsent. Europäische Filme müssen sich in einem stark umkämpften Markt behaupten."],
+      ["DIE AKTEURE", "Filmproduktionen, Verleihe, Kinos, nationale Förderinstitutionen und internationale Studios."],
+      ["DIE EU", "Mit Creative Europe MEDIA unterstützt die EU unter anderem die Entwicklung, Verbreitung und internationale Zusammenarbeit europäischer Filme."],
+      ["DIE DEBATTE", "Wie viel Förderung ist sinnvoll? Und wie kann europäisches Kino sichtbar bleiben, ohne die künstlerische Freiheit einzuschränken?"]
     ]
   },
+
   "The 30% Rule": {
-    intro: "Streamingdienste sollen nicht nur globale Blockbuster zeigen. Die EU verpflichtet audiovisuelle On-Demand-Dienste dazu, einen Mindestanteil europäischer Werke anzubieten.",
-    cards: [
-      ["DIE REGEL", "Mindestens 30 % der Werke im Katalog müssen europäische Werke sein. Die EU-Richtlinie verlangt außerdem eine angemessene Herausstellung.", "RECHTSGRUNDLAGE: AVMSD, ARTIKEL 13"],
-      ["DAS ZIEL", "Europäische Produktionen sollen Zugang zum Publikum bekommen und neben internationalen Inhalten sichtbar bleiben.", "[PLATZHALTER: Beispiel aus einem Streamingkatalog]"],
-      ["DIE UMSETZUNG", "Die Mitgliedstaaten setzen die Richtlinie in nationales Recht um. Unter bestimmten Bedingungen sind auch finanzielle Beiträge von Plattformen möglich.", "[PLATZHALTER: Länderbeispiele]"],
-      ["DIE KRITIK", "Wie wirksam ist eine Quote, wenn Inhalte zwar im Katalog liegen, aber kaum jemand sie entdeckt?", "[PLATZHALTER: Kritik / Gegenpositionen]"]
+    intro: "Stell dir vor, du öffnest einen Streamingdienst. Wie viel davon muss eigentlich aus Europa kommen?",
+    accent: "#5ce5e6",
+    kind: "quota",
+    sections: [
+      ["DIE REGEL", "Audiovisuelle On-Demand-Dienste müssen mindestens 30 % europäische Werke in ihren Katalogen anbieten."],
+      ["DAS ZIEL", "Europäische Produktionen sollen neben internationalen Inhalten Platz finden und für das Publikum zugänglich sein."],
+      ["DIE UMSETZUNG", "Die Mitgliedstaaten setzen die EU-Richtlinie in nationales Recht um. Unter bestimmten Bedingungen können sie auch finanzielle Beiträge von Plattformen verlangen."],
+      ["DIE DEBATTE", "Reicht es, europäische Filme im Katalog zu haben? Oder müssen sie auch auf der Startseite und in Empfehlungen sichtbar sein?"]
     ]
   },
+
   "The Spotify Question": {
-    intro: "Musikstreaming hat verändert, wie wir Musik hören. Doch wie wird das Geld verteilt – und wie viel bleibt bei den Künstler*innen?",
-    cards: [
-      ["DAS PROBLEM", "Streaming-Einnahmen werden über komplexe Lizenz- und Vergütungsmodelle verteilt. Die Auszahlung pro Stream ist nicht einfach ein fester Betrag für jede Person.", "[PLATZHALTER: Vergütungsmodell erklären]"],
-      ["DIE AKTEURE", "Musiker*innen, Labels, Verlage, Verwertungsgesellschaften und Streamingplattformen.", "[PLATZHALTER: Akteure und Interessen]"],
-      ["DIE EU", "Die EU regelt unter anderem Urheberrecht und Transparenz bei der Vergütung. Auch die faire Beteiligung von Kreativen wird politisch diskutiert.", "[PLATZHALTER: EU-Rechtsakte / Initiativen]"],
-      ["DIE DISKUSSION", "Wie können Künstler*innen fairer bezahlt werden, ohne das Streamingmodell komplett umzubauen?", "[PLATZHALTER: Positionen / Lösungsansätze]"]
+    intro: "Millionen Menschen hören täglich Musik über Streamingdienste. Doch wie kommt das Geld von einem Abo bei den Künstler*innen an?",
+    accent: "#b99aff",
+    kind: "music",
+    sections: [
+      ["DAS PROBLEM", "Streaming-Einnahmen werden über Lizenz- und Vergütungsmodelle verteilt. Einen einheitlichen festen Betrag pro Stream gibt es nicht."],
+      ["DIE AKTEURE", "Musiker*innen, Labels, Musikverlage, Verwertungsgesellschaften und Streamingplattformen."],
+      ["DIE EU", "Die EU setzt Regeln für Urheberrecht und Transparenz. Auch die faire Vergütung von Kreativen ist Gegenstand politischer Diskussionen."],
+      ["DIE DEBATTE", "Wie lässt sich sicherstellen, dass Künstler*innen fair an den Einnahmen beteiligt werden?"]
     ]
   },
-  "intro": {
-    intro: "Film, Musik und Medien sind nicht nur Unterhaltung. Sie prägen, welche Geschichten wir kennen, welche Perspektiven sichtbar werden und wie wir Europa wahrnehmen.",
-    cards: [
-      ["DIE FRAGE", "Wie beeinflusst die EU die europäische Film-, Musik- und Medienbranche – und wie stärkt sie kulturelle Vielfalt im globalen Wettbewerb?", "UNSERE LEITFRAGE"],
-      ["DIE SPANNUNG", "Globale Plattformen und große internationale Produktionen treffen auf viele nationale Kulturen, Sprachen und kleinere Märkte.", "GLOBAL VS. EUROPEAN"],
-      ["DIE ROLLE DER EU", "Die EU kann fördern, Regeln setzen und Zusammenarbeit ermöglichen. Kulturpolitik bleibt aber in weiten Teilen Aufgabe der Mitgliedstaaten.", "ARTIKEL 167 AEUV"],
-      ["DEINE REISE", "Entdecke die Themen, vergleiche Interessen und finde heraus, wie Europa seine kreative Zukunft gestalten kann.", "LET'S PLAY"]
+
+  "Creative Europe: MEDIA": {
+    intro: "Europäische Filme brauchen mehr als gute Ideen. Sie brauchen Finanzierung, Vertrieb und ein Publikum. Hier setzt das EU-Programm MEDIA an.",
+    accent: "#c99aff",
+    kind: "funding",
+    sections: [
+      ["DAS ZIEL", "Die europäische Film- und audiovisuelle Branche stärken und grenzüberschreitende Zusammenarbeit ermöglichen."],
+      ["DIE FÖRDERUNG", "Unterstützt werden unter anderem Entwicklung, Verleih, Festivals, Netzwerke, Weiterbildung und internationale Kooperation."],
+      ["DIE EU", "MEDIA ist Teil des Förderprogramms Creative Europe 2021–2027."],
+      ["DIE DEBATTE", "Wie werden Fördermittel verteilt? Erreichen sie auch kleinere Produktionsfirmen und Länder mit kleineren Märkten?"]
     ]
   }
 };
 
-const shelves = document.getElementById("shelves");
-
 function renderShelves() {
-  shelves.innerHTML = "";
+  const container = document.getElementById("shelves");
+  container.innerHTML = "";
 
-  titles.forEach((shelf, shelfIndex) => {
+  shelvesData.forEach(shelf => {
     const section = document.createElement("section");
     section.className = "shelf";
 
     const heading = document.createElement("div");
     heading.className = "shelf-heading";
     heading.innerHTML = `
-      <h3>${shelf.shelf}</h3>
+      <h3>${shelf.name}</h3>
       <span>${shelf.subtitle}</span>
     `;
 
     const track = document.createElement("div");
     track.className = "poster-track";
 
-    shelf.items.forEach((item, index) => {
-      const [title, subtitle, tag, accent, symbol] = item;
-
+    shelf.items.forEach(([title, subtitle, tag, accent, symbol]) => {
       const poster = document.createElement("button");
       poster.className = "poster";
       poster.style.setProperty("--poster-accent", accent);
+
       poster.innerHTML = `
         <div class="poster-art">
           <div class="art-shape"></div>
@@ -146,13 +156,13 @@ function renderShelves() {
         </div>
       `;
 
-      poster.addEventListener("click", () => openTopic(title, accent, tag, subtitle));
+      poster.addEventListener("click", () => openEpisode(title, accent, tag, subtitle));
       track.appendChild(poster);
     });
 
     section.appendChild(heading);
     section.appendChild(track);
-    shelves.appendChild(section);
+    container.appendChild(section);
   });
 }
 
@@ -166,124 +176,251 @@ function showHome() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function openTopic(title, accent = "#ff3d91", tag = "EUROPAFLIX ORIGINAL", subtitle = "") {
-  const home = document.getElementById("home");
-  const detail = document.getElementById("detail");
-  const content = document.getElementById("detail-content");
+function openTopic(topicName) {
+  if (topicName === "challenge") {
+    openChallenge();
+  } else {
+    openEpisode(topicName);
+  }
+}
 
-  const data = topicDetails[title] || {
+function openEpisode(title, accent = "#ff3d91", tag = "EUROPAFLIX ORIGINAL", subtitle = "") {
+  const data = episodes[title] || {
     intro: subtitle
-      ? `${subtitle} Hier erfährst du mehr über das Thema und seine Bedeutung für die europäische Kultur- und Kreativwirtschaft.`
-      : "Hier entsteht ein weiterer Teil deiner EUROPAFLIX-Entdeckungsreise.",
-    cards: [
-      ["DAS PROBLEM", "[PLATZHALTER: Was ist die konkrete Herausforderung?]", "[PLATZHALTER: Zahl / Beispiel]"],
-      ["DIE AKTEURE", "[PLATZHALTER: Welche Länder, Unternehmen oder Interessengruppen spielen eine Rolle?]", "[PLATZHALTER: Länder und Akteure]"],
-      ["DIE EU", "[PLATZHALTER: Was machen Kommission, Parlament und Rat? Gibt es konkrete Initiativen?]", "[PLATZHALTER: EU-Maßnahmen / Rechtsgrundlagen]"],
-      ["DIE DISKUSSION", "[PLATZHALTER: Wer unterstützt oder kritisiert die Maßnahmen – und warum?]", "[PLATZHALTER: Positionen / Quellen]"]
+      ? `${subtitle} Entdecke, welche Bedeutung dieses Thema für die europäische Kultur- und Kreativwirtschaft hat.`
+      : "Hier beginnt eine weitere Episode deiner EUROPAFLIX-Entdeckungsreise.",
+    accent,
+    kind: "standard",
+    sections: [
+      ["DAS PROBLEM", "[PLATZHALTER: Was ist die konkrete Herausforderung?]"],
+      ["DIE AKTEURE", "[PLATZHALTER: Welche Länder, Unternehmen oder Interessengruppen spielen eine Rolle?]"],
+      ["DIE EU", "[PLATZHALTER: Was machen Kommission, Parlament und Rat? Gibt es konkrete Initiativen?]"],
+      ["DIE DEBATTE", "[PLATZHALTER: Wer unterstützt oder kritisiert die Maßnahmen – und warum?]"]
     ]
   };
 
-  home.classList.add("hidden");
+  document.getElementById("home").classList.add("hidden");
+  const detail = document.getElementById("detail");
   detail.classList.remove("hidden");
 
-  content.innerHTML = `
-    <div class="detail-hero" style="--detail-accent: ${accent}">
-      <div class="detail-label">${tag}</div>
+  let visual = "";
+
+  if (data.kind === "quota") {
+    visual = `
+      <section class="episode-visual">
+        <div class="visual-heading">
+          <span>DER STREAMING-KATALOG</span>
+          <strong>30 % EUROPEAN WORKS</strong>
+        </div>
+        <div class="quota-grid">
+          ${Array.from({ length: 10 }, (_, i) =>
+            `<div class="quota-tile ${i < 3 ? "european" : ""}">
+              ${i < 3 ? "★" : "▶"}
+            </div>`
+          ).join("")}
+        </div>
+        <p class="visual-caption">Schematische Darstellung: 3 von 10 Kacheln entsprechen 30 %. Die Quote bezieht sich auf Werke im Katalog – nicht auf die Wiedergabezeit.</p>
+      </section>
+      <section class="episode-interaction">
+        <h3>ABER WAS BEDEUTET SICHTBARKEIT?</h3>
+        <p>Ein Film kann im Katalog vorhanden sein und trotzdem schwer zu finden sein.</p>
+        <button class="reveal-button" onclick="revealFact(this)">Warum gibt es zusätzlich eine Sichtbarkeitsregel?</button>
+        <div class="reveal-answer hidden">
+          Die Richtlinie verlangt auch eine angemessene Herausstellung europäischer Werke. Es geht also nicht nur darum, dass sie irgendwo im Katalog liegen.
+        </div>
+      </section>
+    `;
+  } else if (data.kind === "film") {
+    visual = `
+      <section class="episode-visual">
+        <div class="visual-heading">
+          <span>ZWEI FILMWELTEN</span>
+          <strong>WER BEKOMMT DAS RAMPENLICHT?</strong>
+        </div>
+        <div class="comparison">
+          <div class="comparison-side hollywood">
+            <div class="comparison-symbol">★</div>
+            <h3>HOLLYWOOD</h3>
+            <p>Internationale Studios</p>
+            <strong>[ZAHL EINFÜGEN]</strong>
+            <small>Marktanteil / Bezugsjahr</small>
+          </div>
+          <div class="comparison-vs">VS.</div>
+          <div class="comparison-side europe">
+            <div class="comparison-symbol">✦</div>
+            <h3>EUROPE</h3>
+            <p>Europäische Produktionen</p>
+            <strong>[ZAHL EINFÜGEN]</strong>
+            <small>Marktanteil / Bezugsjahr</small>
+          </div>
+        </div>
+        <p class="visual-caption">Hier später vergleichbare Marktanteile mit Quelle und Jahr einsetzen.</p>
+      </section>
+      <section class="episode-interaction">
+        <h3>WARUM IST DAS WICHTIG?</h3>
+        <p>Marktanteile zeigen, welche Filme im Kino besonders präsent sind. Sie sagen aber nicht allein etwas über Qualität oder kulturelle Bedeutung aus.</p>
+        <button class="reveal-button" onclick="revealFact(this)">Was kann die EU dagegen tun?</button>
+        <div class="reveal-answer hidden">
+          Die EU kann beispielsweise über Creative Europe MEDIA die Entwicklung, Verbreitung und Zusammenarbeit europäischer Filmproduktionen unterstützen.
+        </div>
+      </section>
+    `;
+  } else if (data.kind === "music") {
+    visual = `
+      <section class="episode-visual">
+        <div class="visual-heading">
+          <span>VOM ABO ZUM SONG</span>
+          <strong>WOHIN FLIESST DAS GELD?</strong>
+        </div>
+        <div class="money-flow">
+          <div class="flow-step"><span>1</span><strong>ABO</strong><small>Dein Monatsbeitrag</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><span>2</span><strong>PLATTFORM</strong><small>Streamingdienst</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><span>3</span><strong>RECHTE</strong><small>Labels, Verlage etc.</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><span>4</span><strong>KREATIV</strong><small>Künstler*innen</small></div>
+        </div>
+        <p class="visual-caption">Vereinfachtes Modell. Die tatsächliche Verteilung hängt von Verträgen und Rechteketten ab.</p>
+      </section>
+      <section class="episode-interaction">
+        <h3>IST EIN STREAM IMMER GLEICH VIEL WERT?</h3>
+        <p>Nein. Es gibt keinen allgemein gültigen festen Betrag, der für jeden Stream direkt an die Künstler*innen ausgezahlt wird.</p>
+        <button class="reveal-button" onclick="revealFact(this)">Warum ist das so?</button>
+        <div class="reveal-answer hidden">
+          Einnahmen werden nach verschiedenen Modellen und Verträgen verteilt. Entscheidend ist unter anderem, wer welche Rechte an der Aufnahme und am Song besitzt.
+        </div>
+      </section>
+    `;
+  } else if (data.kind === "funding") {
+    visual = `
+      <section class="episode-visual">
+        <div class="visual-heading">
+          <span>EUROPEAN SUPPORT</span>
+          <strong>CREATIVE EUROPE MEDIA</strong>
+        </div>
+        <div class="funding-grid">
+          <div>🎬<strong>Entwicklung</strong><small>Neue Filmideen und Projekte</small></div>
+          <div>🌍<strong>Verleih</strong><small>Filme über Grenzen bringen</small></div>
+          <div>🎓<strong>Weiterbildung</strong><small>Wissen und Fähigkeiten stärken</small></div>
+          <div>🎪<strong>Festivals</strong><small>Europäische Filme präsentieren</small></div>
+        </div>
+        <p class="visual-caption">Beispiele für Förderbereiche des MEDIA-Programms.</p>
+      </section>
+    `;
+  } else {
+    visual = `
+      <section class="episode-visual">
+        <div class="visual-heading">
+          <span>DEIN EPISODEN-ÜBERBLICK</span>
+          <strong>THE STORY SO FAR</strong>
+        </div>
+        <div class="placeholder-visual">
+          <div class="placeholder-symbol">✦</div>
+          <p>HIER KOMMT DEINE GRAFIK HIN</p>
+          <small>Zum Beispiel: Karte, Zahlenvergleich, Akteursübersicht oder Zeitstrahl</small>
+        </div>
+      </section>
+    `;
+  }
+
+  const sections = data.sections.map((section, index) => `
+    <article class="episode-card">
+      <span>0${index + 1}</span>
+      <h3>${section[0]}</h3>
+      <p>${section[1]}</p>
+    </article>
+  `).join("");
+
+  document.getElementById("detail-content").innerHTML = `
+    <div class="episode-hero" style="--episode-accent: ${data.accent || accent}">
+      <div class="episode-label">${tag}</div>
       <h1>${title}</h1>
       <p>${data.intro}</p>
+      <div class="episode-meta">EUROPAFLIX ORIGINAL <span>•</span> INTERAKTIVE EPISODE</div>
     </div>
-    <div class="detail-grid" style="--detail-accent: ${accent}">
-      ${data.cards.map(card => `
-        <article class="info-card">
-          <h3>${card[0]}</h3>
-          <p>${card[1]}</p>
-          <div class="placeholder">${card[2]}</div>
-        </article>
-      `).join("")}
+
+    ${visual}
+
+    <div class="episode-section-heading">
+      <div class="eyebrow">DIE HINTERGRÜNDE</div>
+      <h2>Was steckt dahinter?</h2>
     </div>
-    <div class="detail-next">
-      <button class="primary-button" onclick="showHome()">← Weitere Titel entdecken</button>
+
+    <div class="episode-cards">${sections}</div>
+
+    <div class="episode-end">
+      <div>
+        <div class="eyebrow">ENDE DER EPISODE</div>
+        <h2>Weiter geht's.</h2>
+        <p>Entdecke weitere Geschichten aus Europas Kultur- und Kreativwirtschaft.</p>
+      </div>
+      <button class="primary-button" onclick="showHome()">← Zurück zum Katalog</button>
     </div>
   `;
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// Kleine Abschluss-Challenge
+function revealFact(button) {
+  const answer = button.nextElementSibling;
+  answer.classList.toggle("hidden");
+  button.textContent = answer.classList.contains("hidden")
+    ? "Mehr erfahren"
+    : "Weniger anzeigen";
+}
+
 function openChallenge() {
-  openTopic("challenge", "#ff3d91", "EUROPAFLIX INTERACTIVE");
-}
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("detail").classList.remove("hidden");
 
-function chooseChallenge(choice) {
-  document.querySelectorAll(".challenge-option").forEach(button => {
-    button.classList.remove("selected");
-  });
+  document.getElementById("detail-content").innerHTML = `
+    <div class="episode-hero" style="--episode-accent: #ff3d91">
+      <div class="episode-label">EUROPAFLIX INTERACTIVE</div>
+      <h1>DU BIST AM DRÜCKER.</h1>
+      <p>Du bist Programmchef*in eines europäischen Streamingdienstes. Deine Aufgabe: europäische Geschichten sichtbar machen. Welche Strategie wählst du?</p>
+    </div>
 
-  const selected = document.querySelector(`[data-choice="${choice}"]`);
-  if (selected) selected.classList.add("selected");
-
-  const feedback = document.getElementById("challenge-feedback");
-
-  const responses = {
-    quota: "Du setzt auf Sichtbarkeit: Die 30%-Quote soll europäische Werke im Streamingkatalog sichern. Aber Sichtbarkeit braucht mehr als nur einen Platz im Katalog.",
-    funding: "Du setzt auf Förderung: Programme wie Creative Europe MEDIA unterstützen die europäische Film- und Kreativbranche. Die Frage bleibt, wie die Förderung verteilt wird.",
-    freedom: "Du setzt auf möglichst wenig Regulierung: Das stärkt unternehmerische Freiheit, kann aber dazu führen, dass kleinere europäische Produktionen schwerer sichtbar werden."
-  };
-
-  if (feedback) feedback.textContent = responses[choice];
-}
-
-topicDetails.challenge = {
-  intro: "Du bist jetzt Programmchef*in von EUROPAFLIX. Deine Plattform soll europäische Geschichten sichtbarer machen. Welche Strategie wählst du?",
-  cards: [
-    ["DEINE ENTSCHEIDUNG", `
+    <section class="episode-visual">
+      <div class="visual-heading">
+        <span>DEINE ENTSCHEIDUNG</span>
+        <strong>WIE SOLL EUROPAFLIX AUSSEHEN?</strong>
+      </div>
       <div class="challenge-options">
-        <button class="challenge-option" data-choice="quota" onclick="chooseChallenge('quota')">
+        <button class="challenge-option" onclick="chooseChallenge('quota', this)">
           <strong>30%-Quote</strong>
           <small>Europäische Werke müssen einen festen Platz im Katalog haben.</small>
         </button>
-        <button class="challenge-option" data-choice="funding" onclick="chooseChallenge('funding')">
+        <button class="challenge-option" onclick="chooseChallenge('funding', this)">
           <strong>Mehr Förderung</strong>
           <small>Europäische Produktionen und Talente finanziell unterstützen.</small>
         </button>
-        <button class="challenge-option" data-choice="freedom" onclick="chooseChallenge('freedom')">
+        <button class="challenge-option" onclick="chooseChallenge('freedom', this)">
           <strong>Weniger Regeln</strong>
           <small>Plattformen sollen selbst entscheiden, was sie anbieten.</small>
         </button>
       </div>
-      <div class="challenge-feedback" id="challenge-feedback">Wähle deine Strategie.</div>
-    `, "DEINE PLATTFORM. DEINE REGELN?"]
-  ]
-};
+      <div class="challenge-feedback" id="challenge-feedback">Wähle eine Strategie, um die Folgen zu entdecken.</div>
+    </section>
+  `;
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function chooseChallenge(choice, button) {
+  document.querySelectorAll(".challenge-option").forEach(option => {
+    option.classList.remove("selected");
+  });
+
+  button.classList.add("selected");
+
+  const responses = {
+    quota: "Du setzt auf Sichtbarkeit: Die 30%-Quote sichert europäischen Werken einen Platz im Katalog. Aber ein Platz im Katalog bedeutet noch nicht automatisch, dass sie auch gefunden werden.",
+    funding: "Du setzt auf Förderung: Programme wie Creative Europe MEDIA unterstützen die europäische Filmbranche. Die große Frage ist, wie die Mittel verteilt werden und wer davon profitiert.",
+    freedom: "Du setzt auf weniger Regulierung: Plattformen behalten mehr Entscheidungsfreiheit. Das kann aber dazu führen, dass kleinere europäische Produktionen im Wettbewerb schwerer sichtbar werden."
+  };
+
+  document.getElementById("challenge-feedback").textContent = responses[choice];
+}
 
 renderShelves();
-
-// Challenge-Inhalt als interaktive Sonderansicht rendern
-const originalOpenTopic = openTopic;
-openTopic = function(title, accent = "#ff3d91", tag = "EUROPAFLIX ORIGINAL", subtitle = "") {
-  originalOpenTopic(title, accent, tag, subtitle);
-
-  if (title === "challenge") {
-    const card = document.querySelector(".info-card");
-    if (card) {
-      card.innerHTML = `
-        <h3>DEINE ENTSCHEIDUNG</h3>
-        <div class="challenge-options">
-          <button class="challenge-option" data-choice="quota" onclick="chooseChallenge('quota')">
-            <strong>30%-Quote</strong>
-            <small>Europäische Werke müssen einen festen Platz im Katalog haben.</small>
-          </button>
-          <button class="challenge-option" data-choice="funding" onclick="chooseChallenge('funding')">
-            <strong>Mehr Förderung</strong>
-            <small>Europäische Produktionen und Talente finanziell unterstützen.</small>
-          </button>
-          <button class="challenge-option" data-choice="freedom" onclick="chooseChallenge('freedom')">
-            <strong>Weniger Regeln</strong>
-            <small>Plattformen sollen selbst entscheiden, was sie anbieten.</small>
-          </button>
-        </div>
-        <div class="challenge-feedback" id="challenge-feedback">Wähle deine Strategie.</div>
-      `;
-    }
-  }
-};
